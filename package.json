@@ -1,16 +1,41 @@
 {
-    "name": "Vaulttera",
-    "type": "module",
-    "scripts": {
-        "start": "npm start --workspaces --if-present",
-        "prebuild": "npm run prebuild --workspaces --if-present",
-        "build": "npm run build --workspaces --if-present",
-        "pretest": "npm run prebuild --workspaces --if-present",
-        "test": "npm test --workspaces --if-present"
-    },
-    "engines": {
-        "node": ">=16.0.0",
-        "npm": ">=7.0.0"
-    },
-    "workspaces": [ ]
+  "name": "vaulttera",
+  "type": "module",
+  "scripts": {
+    "start": "npm start --workspaces --if-present",
+    "prebuild": "npm run prebuild --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present",
+    "pretest": "npm run prebuild --workspaces --if-present",
+    "test": "npm test --workspaces --if-present"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  },
+  "workspaces": [],
+  "dependencies": {
+    "@dfinity/agent": "^2.2.0"
+  },
+  "description": "Coba buat projek web3 buat hackaton",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Janssen125/Vaulttera.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Janssen125/Vaulttera/issues"
+  },
+  "homepage": "https://github.com/Janssen125/Vaulttera#readme",
+  "devDependencies": {
+    "@babel/core": "^7.26.7",
+    "@babel/preset-env": "^7.26.7",
+    "babel-loader": "^9.2.1",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.0"
+  }
 }
