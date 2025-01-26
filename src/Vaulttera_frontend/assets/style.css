@@ -104,10 +104,10 @@ h1 {
 }
 
 .section-4 {
-/*   display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh; */
+  height: 100vh;
 }
 
 .footer {
@@ -610,3 +610,27 @@ h1 {
   background-color: var(--tua);
   border-radius: 14px;
 }
+
+.section-4 .flick-span {
+  --offset: 2;
+  color: var(--text);
+  left: calc(var(--offset) * 1ch + calc(var(--offset) * 0.2ch));
+  animation: flicker 3s linear infinite;
+  top: 0;
+  z-index: 1;
+  text-align: center;
+  font-weight: 500 !important;
+  font-size: 70px;
+}
+
+@keyframes flicker {
+  0%, 19.9%, 22%, 62.9%, 64%, 64.9%, 70%, 100% {
+    opacity: 0.99;
+    text-shadow: -1px -1px 0 rgba(255, 255, 255, 0.4), 1px -1px 0 rgba(255, 255, 255, 0.4), -1px 1px 0 rgba(255, 255, 255, 0.4), 1px 1px 0 rgba(255, 255, 255, 0.4), 0 -2px 8px, 0 0 2px, 0 0 5px #dedede, 0 0 15px rgb(194, 194, 194), 0 0 2px #aeaeae, 0 2px 3px #000;
+ }
+  20%, 21.9%, 63%, 63.9%, 65%, 69.9% {
+    opacity: 0.4;
+    text-shadow: none;
+ }
+}
+
