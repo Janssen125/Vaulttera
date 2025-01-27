@@ -27,6 +27,23 @@ actor {
   let userData = HashMap.HashMap<Principal, userInfo>(0, Principal.equal, Principal.hash);
   let wallet = HashMap.HashMap<Principal, Nat>(0, Principal.equal, Principal.hash);
 
+  // Creating Dummy
+
+  let dummyPrincipal = Principal.fromText("6vna6-am6d2-fjuqg-7nfj7-6222p-wkmwn-yglwh-or6bj-tfkmo-bh2yk-yqe");
+  let newUser = {
+    name = "Dummy";
+    email = "Dummy@gmail.com";
+    bio = "Dummy";
+  };
+  userData.put(dummyPrincipal, newUser);
+
+  public query func getDummyUsername() : async Text {
+    switch (userData.get(dummyPrincipal)) {
+      case (?user) return user.name;
+      case null return "No dummy user found.";
+    };
+  };
+
   // User
 
   public query func getUserInfo(p : Principal) : async Result<userInfo, Text> {
