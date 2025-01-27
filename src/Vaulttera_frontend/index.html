@@ -168,7 +168,7 @@
                 <div class="card" style="--clr:#4E3B31;">
                     <div class="box">
                         <div class="icon">
-                            <div class="iconBox"><i class="fa-solid fa-square-binary" style="font-size: 50px; color: #4E3B31;"></i></div>
+                            <div class="iconBox"><i class="fa-solid fa-square-binary" style="font-size: 50px; color: #F2F2F2;"></i></div>
                         </div>
                         <div class="content">
                             <h3>Non-Fungible Tokens</h3>
@@ -179,10 +179,10 @@
             </div>
 
         <div class="col-md-3 my-3">
-            <div class="card" style="--clr:#7A5B3A;">
+            <div class="card" style="--clr:#a8cba0;">
                 <div class="box">
                     <div class="icon">
-                        <div class="iconBox"><i class="fa-solid fa-link" style="font-size: 50px; color: #4E3B31;"></i></div>
+                        <div class="iconBox"><i class="fa-solid fa-link" style="font-size: 50px; color: #F2F2F2;"></i></div>
                     </div>
                     <div class="content">
                         <h3>Blockchain!</h3>
@@ -196,7 +196,7 @@
             <div class="card" style="--clr:#d9e4b2;">
                 <div class="box">
                     <div class="icon">
-                        <div class="iconBox"><i class="fab fa-bitcoin" style="font-size: 50px; color: #4E3B31;"></i></div>
+                        <div class="iconBox"><i class="fab fa-bitcoin" style="font-size: 50px; color: #F2F2F2;"></i></div>
                     </div>
                     <div class="content">
                         <h3>Valuable</h3>
@@ -210,7 +210,7 @@
             <div class="card" style="--clr:#F2F2F2;">
                 <div class="box">
                     <div class="icon">
-                        <div class="iconBox"><i class="fa-solid fa-palette" style="font-size: 50px; color: #4E3B31;"></i></div>
+                        <div class="iconBox"><i class="fa-solid fa-palette" style="font-size: 50px; color: #F2F2F2;"></i></div>
                     </div>
                     <div class="content">
                         <h3>Application</h3>
@@ -296,10 +296,13 @@
                 <div class="swiper-pagination"></div>
             </div>
 
-            <a href="nft.html" class="btn btn-primary">EXPLORE MORE NFTs!</a>
+            <div class="col explore-nft my-3">
+                <a href="nft.html" class="btn-explore"><span>Explore more NFTs!</span></a>
+            </div>
         </div>
     </div>
 </section>
+
 <div class="footer">
     <div class="container-fluid">
         <div class="row">
@@ -345,7 +348,7 @@
     })
 
   const sections = document.querySelectorAll("section");
-  const colors = ["#7A5B3A", "#A8CBA0", "#D9E4B2"]; // Colors for each section
+  const colors = ["#4E3B31","#7A5B3A", "#A8CBA0", "#D9E4B2"]; // Colors for each section
 
   window.addEventListener("scroll", () => {
     sections.forEach((section, index) => {
@@ -425,6 +428,25 @@
 
   flipActiveSlide();
 
+  let btn = document.querySelectorAll('.btn-explore').forEach(btn => {
+    btn.addEventListener('mousemove',(e)=>{
+        let x = e.offsetX;
+        let y = e.offsetY;
+        let btnWidth = btn.clientWidth;
+        let btnHeight = btn.clientHeight;
+        let transX = (x - btnWidth/2);
+        let transY = (y - btnHeight/2);
+        btn.style.transform = `translateX(${transX}px) translateY(${transY}px)`;
+
+        let mx = e.pageX - btn.offsetLeft;
+        let my = e.pageY - btn.offsetTop;
+        btn.style.setProperty('--x', mx + 'px');
+        btn.style.setProperty('--y', my + 'px');
+    })
+    btn.addEventListener('mouseout', (e) => {
+        btn.style.transform = '';
+    })
+  })
 </script>
 </body>
 </html>
