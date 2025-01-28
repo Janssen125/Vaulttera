@@ -861,3 +861,152 @@ footer {
 .footerBottom p {
   color: var(--text);
 }
+
+
+/* LOGIN/REGISTER */
+
+.form-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(90deg, #A8CBA0, #D9E4B2);
+}
+
+.form-container {
+  position: relative;
+  width: 950px;
+  height: 550px;
+  background: var(--matcha);
+  border-radius: 30px;
+  box-shadow: 0 0 30px rgba(0,0,0,.2);
+  overflow: hidden;
+}
+
+.form-box {
+  position: absolute;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: var(--matcha);
+  display: flex;
+  align-items: center;
+  color: var(--text);
+  text-align: center;
+  padding: 40px;
+  z-index: 1;
+}
+
+.form-box.register {
+  visibility: hidden;
+}
+
+.form-box form {
+  width: 100%;
+}
+
+.form-container h1 {
+  font-size: 36px;
+  margin: -10px 0;
+}
+
+.form-box .input-box {
+  position: relative;
+  margin: 30px 0;
+}
+
+.form-box .input-box input {
+  width: 100%;
+  padding: 13px 50px 13px 20px;
+  background: #eee;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+}
+
+.form-box .input-box input::placeholder {
+  color: #888;
+  font-weight: 400;
+}
+
+.form-box .input-box i{
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #888;
+}
+
+.forgot-link {
+  margin: -15px 0 15px;
+}
+
+.forgot-link a {
+  font-size: 14.5px;
+  color: #333;
+  text-decoration: none;
+}
+
+.form-box .btn {
+  width: 100%;
+  height: 48px;
+  background: var(--muda);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,.1);
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.form-container p {
+  font-size: 14.5px;
+  margin: 15px 0;
+}
+
+.toggle-box {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.toggle-box::before {
+  content: '';
+  position: absolute;
+  left: -250%;
+  width: 300%;
+  height: 100%;
+  background: #4E3B31;
+  border-radius: 150px;
+  z-index: 2;
+}
+
+.toggle-panel {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+/*   background: #4E3B31; */
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.toggle-panel p {
+  margin-bottom: 20px;
+}
+
+.toggle-panel .btn {
+  width: 160px;
+  height: 46px;
+  background: transparent;
+  border: 2px solid #F2F2F2;
+  box-shadow: none;
+}
