@@ -2,7 +2,7 @@
 
 :root {
   --tua: #4E3B31;
-  --muda: #7A5B3A ;
+  --muda: #7A5B3A;
   --ijo: #A8CBA0;
   --matcha: #D9E4B2;
   --text: #F2F2F2;
@@ -17,13 +17,20 @@
 }
 
 body {
-min-height: 100vh;
-transition: background-color 0.5s ease;
-overflow-x: hidden;
+  min-height: 100vh;
+  transition: background-color 0.5s ease;
+  overflow-x: hidden;
 }
 
 h1 {
   overflow: hidden;
+}
+
+nav {
+  position: fixed !important;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .navbar {
@@ -56,14 +63,20 @@ h1 {
   position: absolute;
   z-index: 999;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .text h1 {
   overflow-y: hidden;
+  font-size: 10rem;
 }
 
 .text h2 {
   overflow-y: hidden;
+  font-size: 2rem;
 }
 
 #par-1 {
@@ -230,14 +243,14 @@ h1 {
   transform: translateY(-60px);
 }
 
-.profile-card .img img{
+.profile-card .img img {
   width: 100%;
   border-radius: 50%;
   box-shadow: 0 0 22px #3336;
   transition: .6s;
 }
 
-.profile-card:hover img{
+.profile-card:hover img {
   border-radius: 10px;
 }
 
@@ -252,28 +265,28 @@ h1 {
   opacity: 1;
 }
 
-.caption h3{
+.caption h3 {
   font-size: 21px;
 }
 
-.caption p{
+.caption p {
   font-size: 17px;
   color: var(--text);
   margin: 2px 0 6px 0;
 }
 
-.caption .social-links a{
+.caption .social-links a {
   color: var(--text);
   margin-right: 8px;
   font-size: 16px;
   transition: .6s;
 }
 
-.social-links a:hover{
+.social-links a:hover {
   color: var(--tua);
 }
 
-.our-team h1{
+.our-team h1 {
   margin-top: -100px;
   text-align: center;
   color: var(--text);
@@ -292,21 +305,22 @@ h1 {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   width: 300px;
   height: 300px;
   background: url("../assets/img/earth.jpg");
   background-size: cover;
   background-repeat: repeat-x;
   border-radius: 50%;
-  box-shadow: inset 0 0 20px rgba(0,0,0,1), 0 0 50px #D9E4B2;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 1), 0 0 50px #D9E4B2;
   animation: animateEarth 60s linear infinite;
 }
 
 @keyframes animateEarth {
   0% {
-    background-position: 0 0 ;
+    background-position: 0 0;
   }
+
   100% {
     background-position: -6289px 0;
   }
@@ -346,15 +360,24 @@ h1 {
   0% {
     transform: perspective(1000px) rotateY(360Deg) rotateX(15Deg) translateY(-30px);
   }
+
   100% {
     transform: perspective(1000px) rotateY(0Deg) rotateX(15Deg) translateY(-30px);
   }
 }
 
-.lePeek span { animation-name: lePeek }
+.lePeek span {
+  animation-name: lePeek
+}
+
 @keyframes lePeek {
-    25% {  transform: rotateX(30deg) translateY(10px) rotate(-13deg); }
-    50% { transform: translateY(-22px) rotate(3deg) scale(1.1);  }
+  25% {
+    transform: rotateX(30deg) translateY(10px) rotate(-13deg);
+  }
+
+  50% {
+    transform: translateY(-22px) rotate(3deg) scale(1.1);
+  }
 }
 
 .section-3 .card-container {
@@ -390,7 +413,7 @@ h1 {
   transition: 0.5s;
 }
 
-.card-container .card .box .icon::before{
+.card-container .card .box .icon::before {
   content: '';
   position: absolute;
   bottom: -30px;
@@ -402,7 +425,7 @@ h1 {
   box-shadow: -5px -5px 0 5px var(--clr);
 }
 
-.card-container .card .box .icon::after{
+.card-container .card .box .icon::after {
   content: '';
   position: absolute;
   top: 0;
@@ -498,7 +521,8 @@ h1 {
   transform: rotateY(180deg);
 }
 
-.section-4 .swiper-slide .front, .section-4 .swiper-slide .back {
+.section-4 .swiper-slide .front,
+.section-4 .swiper-slide .back {
   position: absolute;
   width: 100%;
   height: 500px;
@@ -510,11 +534,9 @@ h1 {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    circle closest-side,
-    #658bd9 3px,
-    transparent 3px
-  );
+  background: radial-gradient(circle closest-side,
+      #658bd9 3px,
+      transparent 3px);
   background-size: 8px 8px;
   transition: opacity 0.2s cubic-bezier(0.86, 0, 0.07, 1);
   opacity: 0.3;
@@ -544,7 +566,7 @@ h1 {
   transform: rotateY(180deg);
 }
 
-.section-4 .swiper-slide-active .card .back p{
+.section-4 .swiper-slide-active .card .back p {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -567,7 +589,7 @@ h1 {
   left: 50%;
   transform: translateX(-50%) scale(1);
   box-shadow: 0 7px 30px 0 rgba(100, 100, 111, 0.2);
-  background: rgba(217, 228, 178, 0.518) ;
+  background: rgba(217, 228, 178, 0.518);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   color: var(--tua);
@@ -624,14 +646,28 @@ h1 {
 }
 
 @keyframes flicker {
-  0%, 19.9%, 22%, 62.9%, 64%, 64.9%, 70%, 100% {
+
+  0%,
+  19.9%,
+  22%,
+  62.9%,
+  64%,
+  64.9%,
+  70%,
+  100% {
     opacity: 0.99;
     text-shadow: -1px -1px 0 rgba(255, 255, 255, 0.4), 1px -1px 0 rgba(255, 255, 255, 0.4), -1px 1px 0 rgba(255, 255, 255, 0.4), 1px 1px 0 rgba(255, 255, 255, 0.4), 0 -2px 8px, 0 0 2px, 0 0 5px #dedede, 0 0 15px rgb(194, 194, 194), 0 0 2px #aeaeae, 0 2px 3px #000;
- }
-  20%, 21.9%, 63%, 63.9%, 65%, 69.9% {
+  }
+
+  20%,
+  21.9%,
+  63%,
+  63.9%,
+  65%,
+  69.9% {
     opacity: 0.4;
     text-shadow: none;
- }
+  }
 }
 
 .explore-nft {
@@ -660,7 +696,7 @@ h1 {
   overflow: hidden;
 }
 
-.btn-explore span{
+.btn-explore span {
   position: relative;
   pointer-events: none;
   color: var(--matcha);
