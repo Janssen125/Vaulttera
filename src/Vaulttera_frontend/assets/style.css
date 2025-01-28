@@ -146,12 +146,12 @@ section {
 
 #par-3 {
   position: absolute;
-  width: 150%;
-  height: 200%;
+  width: 140%;
+  height: 190%;
   transform: translate(-17%, 130%);
 }
 
-.section-2 {
+/* .section-2 {
   height: 100%;
 }
 
@@ -165,7 +165,7 @@ section {
   align-items: center;
   justify-content: center;
   height: 100vh;
-} */
+}  */
 
 .footer {
   display: flex;
