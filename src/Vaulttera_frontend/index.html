@@ -1,453 +1,494 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="assets/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/cssanimation.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="/"> Vaulterra </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <div class="me-auto">
                     <a href=""></a>
                 </div>
-            <ul class="navbar-nav mb-2 mx-3 mb-lg-0">
-                <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="/products">NFT List</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="/about-us">Revenue</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="/contact-us">Login</a>
-                </li>
-            </ul>
+                <ul class="navbar-nav mb-2 mx-3 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/products">NFT List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about-us">Revenue</a>
+                    </li>
+                    <li class="nav-item" id="login">
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
-<div class="parallax">
-    <div class="text">
-        <h1>Welcome! <span id="username">Loading...</span> Vaulterra</h1>
-        <br>
-        <h2>Scroll to start</h2>
-    </div>
-    <img src="assets/img/background.jpg" alt="" id="par-bg">
-    <img src="assets/img/parallax-3.png" alt="" id="par-3">
-    <img src="assets/img/parallax-3.png" alt="" id="par-4">
-</div>
-
-<section id="about" class="section-2">
-    <div class="container-fluid" data-aos="fade-up">
-
-      <div class="row position-relative">
-
-        <div class="col-md-6 about-img" style="background-image: url(assets/img/background.jpg);"></div>
-
-        <div class="col-md-7">
-            <h2>
-            <div class="cssanimation lePeek sequence"> What is Vaulterra?</div>
-            </h2>
-          <div class="our-story">
-            <h4>Est 2025</h4>
-            <h3>Our Story</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat laboriosam quisquam id, voluptas sapiente placeat doloremque at asperiores dicta dolores labore qui adipisci repudiandae quaerat sed eveniet debitis explicabo quis fugit facere! Omnis vero asperiores voluptates animi harum nemo corrupti dicta autem odit dolores porro, temporibus nam ad ipsa rerum expedita. Incidunt aliquid, esse doloremque nam alias delectus eaque, accusantium 
-                <br>
-                <br>
-            vitae rerum voluptates molestias fugit assumenda vel voluptatem est. Quidem soluta adipisci exercitationem ipsa veritatis provident optio accusantium. Commodi odio animi ut error iure repudiandae. Ad quas dolore, consequuntur voluptatum animi sed neque iure totam veritatis dolor unde debitis vero.</p>
-          </div>
+    <div class="parallax">
+        <div class="text">
+            <h1>Vaulterra</h1>
+            <br>
+            <h2>Scroll to start</h2>
         </div>
-      </div>
-
-    <div class="row our-team">
-        <h1>Amazing team behind vaulterra!</h1>
-        <div class="col-md-3 my-3">
-            <div class="profile-card">
-                <div class="img">
-                    <img src="assets/img/VEBRI.png" alt="" > 
-                </div>
-                <div class="caption">
-                    <h3>Yehezkiel Natanael</h3>
-                    <p>frontend</p>
-                    <div class="social-links">
-                        <a href=""><i class="fab fa-github"></i></a>
-                        <a href=""><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 my-3">
-            <div class="profile-card">
-                <div class="img">
-                    <img src="assets/img/VEBRI.png" alt="" > 
-                </div>
-                <div class="caption">
-                    <h3>Janssen Addison</h3>
-                    <p>frontend</p>
-                    <div class="social-links">
-                        <a href=""><i class="fab fa-github"></i></a>
-                        <a href=""><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 my-3">
-            <div class="profile-card">
-                <div class="img">
-                    <img src="assets/img/VEBRI.png" alt="" > 
-                </div>
-                <div class="caption">
-                    <h3>Ferdinan</h3>
-                    <p>frondtend</p>
-                    <div class="social-links">
-                        <a href=""><i class="fab fa-github"></i></a>
-                        <a href=""><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 my-3">
-            <div class="profile-card">
-                <div class="img">
-                    <img src="assets/img/VEBRI.png" alt="" > 
-                </div>
-                <div class="caption">
-                    <h3>Ms Ferdinan</h3>
-                    <p>frontend</p>
-                    <div class="social-links">
-                        <a href=""><i class="fab fa-github"></i></a>
-                        <a href=""><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <img src="assets/img/background.jpg" alt="" id="par-bg">
+        <img src="assets/img/parallax-3.png" alt="" id="par-3">
+        <img src="assets/img/parallax-3.png" alt="" id="par-4">
     </div>
 
-</div>
-</section>
-<section class="section-3">
-    <div class="container-fluid">
-    <div class="row">
-        <div class="earth-container">
-            <div class="earth"></div>
-            <div class="circle">
-                <span style="--i:1">W</span>
-                <span style="--i:2">h</span>
-                <span style="--i:3">a</span>
-                <span style="--i:4">t</span>
-                <span style="--i:5"> </span>
-                <span style="--i:6">i</span>
-                <span style="--i:7">s</span>
-                <span style="--i:8"> </span>
-                <span style="--i:9">N</span>
-                <span style="--i:10">F</span>
-                <span style="--i:11">T</span>
-                <span style="--i:12">?</span>
+    <section id="about" class="section-2">
+        <div class="container-fluid" data-aos="fade-up">
+
+            <div class="row position-relative">
+
+                <div class="col-md-6 about-img" style="background-image: url(assets/img/background.jpg);"></div>
+
+                <div class="col-md-7">
+                    <h2>
+                        <div class="cssanimation lePeek sequence"> What is Vaulterra?</div>
+                    </h2>
+                    <div class="our-story">
+                        <h4>Est 2025</h4>
+                        <h3>Our Story</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat laboriosam quisquam id,
+                            voluptas sapiente placeat doloremque at asperiores dicta dolores labore qui adipisci
+                            repudiandae quaerat sed eveniet debitis explicabo quis fugit facere! Omnis vero asperiores
+                            voluptates animi harum nemo corrupti dicta autem odit dolores porro, temporibus nam ad ipsa
+                            rerum expedita. Incidunt aliquid, esse doloremque nam alias delectus eaque, accusantium
+                            <br>
+                            <br>
+                            vitae rerum voluptates molestias fugit assumenda vel voluptatem est. Quidem soluta adipisci
+                            exercitationem ipsa veritatis provident optio accusantium. Commodi odio animi ut error iure
+                            repudiandae. Ad quas dolore, consequuntur voluptatum animi sed neque iure totam veritatis
+                            dolor unde debitis vero.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row our-team">
+                <h1>Amazing team behind vaulterra!</h1>
+                <div class="col-md-3 my-3">
+                    <div class="profile-card">
+                        <div class="img">
+                            <img src="assets/img/VEBRI.png" alt="">
+                        </div>
+                        <div class="caption">
+                            <h3>Yehezkiel Natanael</h3>
+                            <p>frontend</p>
+                            <div class="social-links">
+                                <a href=""><i class="fab fa-github"></i></a>
+                                <a href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 my-3">
+                    <div class="profile-card">
+                        <div class="img">
+                            <img src="assets/img/VEBRI.png" alt="">
+                        </div>
+                        <div class="caption">
+                            <h3>Janssen Addison</h3>
+                            <p>frontend</p>
+                            <div class="social-links">
+                                <a href=""><i class="fab fa-github"></i></a>
+                                <a href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 my-3">
+                    <div class="profile-card">
+                        <div class="img">
+                            <img src="assets/img/VEBRI.png" alt="">
+                        </div>
+                        <div class="caption">
+                            <h3>Ferdinan</h3>
+                            <p>frondtend</p>
+                            <div class="social-links">
+                                <a href=""><i class="fab fa-github"></i></a>
+                                <a href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 my-3">
+                    <div class="profile-card">
+                        <div class="img">
+                            <img src="assets/img/VEBRI.png" alt="">
+                        </div>
+                        <div class="caption">
+                            <h3>Ms Ferdinan</h3>
+                            <p>frontend</p>
+                            <div class="social-links">
+                                <a href=""><i class="fab fa-github"></i></a>
+                                <a href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="section-3">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="earth-container">
+                    <div class="earth"></div>
+                    <div class="circle">
+                        <span style="--i:1">W</span>
+                        <span style="--i:2">h</span>
+                        <span style="--i:3">a</span>
+                        <span style="--i:4">t</span>
+                        <span style="--i:5"> </span>
+                        <span style="--i:6">i</span>
+                        <span style="--i:7">s</span>
+                        <span style="--i:8"> </span>
+                        <span style="--i:9">N</span>
+                        <span style="--i:10">F</span>
+                        <span style="--i:11">T</span>
+                        <span style="--i:12">?</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-container">
+                <div class="row">
+                    <div class="col-md-3 my-3">
+                        <div class="card" style="--clr:#4E3B31;">
+                            <div class="box">
+                                <div class="icon">
+                                    <div class="iconBox"><i class="fa-solid fa-square-binary"
+                                            style="font-size: 50px; color: #F2F2F2;"></i></div>
+                                </div>
+                                <div class="content">
+                                    <h3>Non-Fungible Tokens</h3>
+                                    <p>NFTs (Non-Fungible Tokens) are unique digital assets that represent ownership of
+                                        a specific item or piece of content, such as art, music, videos, or virtual
+                                        goods, stored on a blockchain (usually Ethereum). Unlike cryptocurrencies like
+                                        Bitcoin or Ethereum, NFTs are non-fungible, meaning each token has distinct
+                                        properties and cannot be exchanged on a one-to-one basis.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 my-3">
+                        <div class="card" style="--clr:#a8cba0;">
+                            <div class="box">
+                                <div class="icon">
+                                    <div class="iconBox"><i class="fa-solid fa-link"
+                                            style="font-size: 50px; color: #F2F2F2;"></i></div>
+                                </div>
+                                <div class="content">
+                                    <h3>Blockchain!</h3>
+                                    <p>NFTs use blockchain technology to verify ownership and ensure that each token is
+                                        unique. When you purchase an NFT, you gain ownership of the digital asset, which
+                                        is recorded on the blockchain. This record includes details about the creator,
+                                        ownership history, and metadata, making it transparent and nearly impossible to
+                                        alter or counterfeit.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 my-3">
+                        <div class="card" style="--clr:#d9e4b2;">
+                            <div class="box">
+                                <div class="icon">
+                                    <div class="iconBox"><i class="fab fa-bitcoin"
+                                            style="font-size: 50px; color: #F2F2F2;"></i></div>
+                                </div>
+                                <div class="content">
+                                    <h3>Valuable</h3>
+                                    <p>The value of NFTs comes from their uniqueness, rarity, and the demand for them in
+                                        the market. They often represent exclusive content, limited editions, or digital
+                                        collectibles. Some are valued for their connection to famous creators, while
+                                        others gain worth as investments due to their potential for appreciation.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 my-3">
+                        <div class="card" style="--clr:#F2F2F2;">
+                            <div class="box">
+                                <div class="icon">
+                                    <div class="iconBox"><i class="fa-solid fa-palette"
+                                            style="font-size: 50px; color: #F2F2F2;"></i></div>
+                                </div>
+                                <div class="content">
+                                    <h3>Application</h3>
+                                    <p>NFTs are used in various industries: Digital art collections and marketplaces,
+                                        In-game assets like skins, weapons, and land, Musicians sell exclusive albums,
+                                        concert tickets, or experiences as NFTs, Virtual real estate or wearable items
+                                        in digital worlds, NFTs can also serve as unique digital identifiers or proof of
+                                        membership in exclusive communities.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-4" style="margin-top: 240px;">
+        <div class="container-fluid">
+            <div class="row">
+                <h1 class="flick-text" data-flicker="5" style="text-align: center; font-weight: 600; color: #4E3B31;">
+                    Current top <span class="flick-span" aria-hidden="true">5</span> NFTs</h1>
+
+                <h1 style="text-align: center; font-weight: 600; color: #4E3B31;">IN MARKET!</h1>
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="card">
+                                <div class="front">
+                                    <img src="assets/img/dummy-1.jpg" alt="">
+                                    <button>View Details</button>
+                                </div>
+                                <div class="back">
+                                    <img src="assets/img/dummy-1.jpg" alt="">
+                                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate iste
+                                        repudiandae harum corporis est eum numquam sint debitis, exercitationem non!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card">
+                                <div class="front">
+                                    <img src="assets/img/dummy-2.jpg" alt="">
+                                    <button>View Details</button>
+                                </div>
+                                <div class="back">
+                                    <img src="assets/img/dummy-2.jpg" alt="">
+                                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate iste
+                                        repudiandae harum corporis est eum numquam sint debitis, exercitationem non!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card">
+                                <div class="front">
+                                    <img src="assets/img/dummy-3.jpg" alt="">
+                                    <button>View Details</button>
+                                </div>
+                                <div class="back">
+                                    <img src="assets/img/dummy-3.jpg" alt="">
+                                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate iste
+                                        repudiandae harum corporis est eum numquam sint debitis, exercitationem non!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card">
+                                <div class="front">
+                                    <img src="assets/img/dummy-4.jpg" alt="">
+                                    <button>View Details</button>
+                                </div>
+                                <div class="back">
+                                    <img src="assets/img/dummy-4.jpg" alt="">
+                                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate iste
+                                        repudiandae harum corporis est eum numquam sint debitis, exercitationem non!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card">
+                                <div class="front">
+                                    <img src="assets/img/dummy-5.jpg" alt="">
+                                    <button>View Details</button>
+                                </div>
+                                <div class="back">
+                                    <img src="assets/img/dummy-5.jpg" alt="">
+                                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate iste
+                                        repudiandae harum corporis est eum numquam sint debitis, exercitationem non!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+                <div class="col explore-nft my-3">
+                    <a href="nft.html" class="btn-explore"><span>Explore more NFTs!</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2">
+                    <h1>hi</h1>
+                </div>
+                <div class="col-md-4">
+                    <ul>
+                        <li>satu</li>
+                        <li>satu</li>
+                        <li>satu</li>
+                        <li>satu</li>
+                    </ul>
+                </div>
+                <a href="">Created by</a>
             </div>
         </div>
     </div>
-    
-        <div class="card-container">
-        <div class="row">
-            <div class="col-md-3 my-3">
-                <div class="card" style="--clr:#4E3B31;">
-                    <div class="box">
-                        <div class="icon">
-                            <div class="iconBox"><i class="fa-solid fa-square-binary" style="font-size: 50px; color: #F2F2F2;"></i></div>
-                        </div>
-                        <div class="content">
-                            <h3>Non-Fungible Tokens</h3>
-                            <p>NFTs (Non-Fungible Tokens) are unique digital assets that represent ownership of a specific item or piece of content, such as art, music, videos, or virtual goods, stored on a blockchain (usually Ethereum). Unlike cryptocurrencies like Bitcoin or Ethereum, NFTs are non-fungible, meaning each token has distinct properties and cannot be exchanged on a one-to-one basis.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        <div class="col-md-3 my-3">
-            <div class="card" style="--clr:#a8cba0;">
-                <div class="box">
-                    <div class="icon">
-                        <div class="iconBox"><i class="fa-solid fa-link" style="font-size: 50px; color: #F2F2F2;"></i></div>
-                    </div>
-                    <div class="content">
-                        <h3>Blockchain!</h3>
-                        <p>NFTs use blockchain technology to verify ownership and ensure that each token is unique. When you purchase an NFT, you gain ownership of the digital asset, which is recorded on the blockchain. This record includes details about the creator, ownership history, and metadata, making it transparent and nearly impossible to alter or counterfeit.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 my-3">
-            <div class="card" style="--clr:#d9e4b2;">
-                <div class="box">
-                    <div class="icon">
-                        <div class="iconBox"><i class="fab fa-bitcoin" style="font-size: 50px; color: #F2F2F2;"></i></div>
-                    </div>
-                    <div class="content">
-                        <h3>Valuable</h3>
-                        <p>The value of NFTs comes from their uniqueness, rarity, and the demand for them in the market. They often represent exclusive content, limited editions, or digital collectibles. Some are valued for their connection to famous creators, while others gain worth as investments due to their potential for appreciation.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 my-3">
-            <div class="card" style="--clr:#F2F2F2;">
-                <div class="box">
-                    <div class="icon">
-                        <div class="iconBox"><i class="fa-solid fa-palette" style="font-size: 50px; color: #F2F2F2;"></i></div>
-                    </div>
-                    <div class="content">
-                        <h3>Application</h3>
-                        <p>NFTs are used in various industries: Digital art collections and marketplaces, In-game assets like skins, weapons, and land, Musicians sell exclusive albums, concert tickets, or experiences as NFTs, Virtual real estate or wearable items in digital worlds, NFTs can also serve as unique digital identifiers or proof of membership in exclusive communities.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        </div>
-    </div>
-</div>
-</section>
-<section class="section-4" style="margin-top: 240px;">
-    <div class="container-fluid">
-        <div class="row">
-            <h1 class="flick-text" data-flicker="5" style="text-align: center; font-weight: 600; color: #4E3B31;">Current top <span class="flick-span" aria-hidden="true">5</span> NFTs</h1>
-            
-            <h1 style="text-align: center; font-weight: 600; color: #4E3B31;">IN MARKET!</h1>
-            <div class="swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="front">
-                                <img src="assets/img/dummy-1.jpg" alt="">
-                                <button>View Details</button>
-                            </div>
-                            <div class="back">
-                                <img src="assets/img/dummy-1.jpg" alt="">
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate iste repudiandae harum corporis est eum numquam sint debitis, exercitationem non!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="front">
-                                <img src="assets/img/dummy-2.jpg" alt="">
-                                <button>View Details</button>
-                            </div>
-                            <div class="back">
-                                <img src="assets/img/dummy-2.jpg" alt="">
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate iste repudiandae harum corporis est eum numquam sint debitis, exercitationem non!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="front">
-                                <img src="assets/img/dummy-3.jpg" alt="">
-                                <button>View Details</button>
-                            </div>
-                            <div class="back">
-                                <img src="assets/img/dummy-3.jpg" alt="">
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate iste repudiandae harum corporis est eum numquam sint debitis, exercitationem non!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="front">
-                                <img src="assets/img/dummy-4.jpg" alt="">
-                                <button>View Details</button>
-                            </div>
-                            <div class="back">
-                                <img src="assets/img/dummy-4.jpg" alt="">
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate iste repudiandae harum corporis est eum numquam sint debitis, exercitationem non!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="front">
-                                <img src="assets/img/dummy-5.jpg" alt="">
-                                <button>View Details</button>
-                            </div>
-                            <div class="back">
-                                <img src="assets/img/dummy-5.jpg" alt="">
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate iste repudiandae harum corporis est eum numquam sint debitis, exercitationem non!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-
-            <div class="col explore-nft my-3">
-                <a href="nft.html" class="btn-explore"><span>Explore more NFTs!</span></a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<div class="footer">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2">
-                <h1>hi</h1>
-            </div>
-            <div class="col-md-4">
-                <ul>
-                    <li>satu</li>
-                    <li>satu</li>
-                    <li>satu</li>
-                    <li>satu</li>
-                </ul>
-            </div>
-            <a href="">Created by</a>
-        </div>
-    </div>
-</div> 
+    <script src="js/home.js"></script>
     <script src="../../dist/bundle.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/letteranimation.min.js"></script>
-<script>
-    gsap.from("#par-bg", {
-        scrollTrigger : {
-            scrub: true
-        },
-        y: 100,
-    })
-    gsap.from("#par-3", {
-        scrollTrigger : {
-            scrub: true
-        },
-        x: 0,
-    })
-    gsap.from("#par-4", {
-        scrollTrigger : {
-            scrub: true
-        },
-        x: 1000,
-    })
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/letteranimation.min.js"></script>
+    <script>
+        gsap.from("#par-bg", {
+            scrollTrigger: {
+                scrub: true
+            },
+            y: 100,
+        })
+        gsap.from("#par-3", {
+            scrollTrigger: {
+                scrub: true
+            },
+            x: 0,
+        })
+        gsap.from("#par-4", {
+            scrollTrigger: {
+                scrub: true
+            },
+            x: 1000,
+        })
 
-  const sections = document.querySelectorAll("section");
-  const colors = ["#4E3B31","#7A5B3A", "#A8CBA0", "#D9E4B2"]; // Colors for each section
+        const sections = document.querySelectorAll("section");
+        const colors = ["#4E3B31", "#7A5B3A", "#A8CBA0", "#D9E4B2"]; // Colors for each section
 
-  window.addEventListener("scroll", () => {
-    sections.forEach((section, index) => {
-      const rect = section.getBoundingClientRect();
-      if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-        document.body.style.backgroundColor = colors[index];
-      }
-    });
-  });
-
-  var swiper = new Swiper(".swiper", {
-    initialSlide: 3,
-    centeredSlides: true,
-    loop: true,
-    speed: 900,
-    grabCursor: true,
-    allowTouchMove: true,
-    effect: "coverflow",
-    coverflowEffect: {
-        rotate: -10,
-        stretch: -45,
-        depth: 90,
-        modifier: 1,
-        slideShadows: true,
-    },
-    mousewheel: {
-        thresholdDelta: 50,
-        sensitivity: 1,
-    },
-    pagination: {
-        el: ".swiper-pagination",
-    },
-    breakpoints: {
-        0: {
-            slidesPerView: 1,
-            spaceBetween: 20,
-        },
-        600: {
-            slidesPerView: 3,
-        },
-        1200: {
-            slidesPerView: 5,
-        },
-    },
-  });
-
-  const slides = document.querySelectorAll(".swiper-slide");
-
-  function flipActiveSlide() {
-    const activeSlide = document.querySelector(".swiper-slide-active");
-    const button = activeSlide.querySelector("button");
-
-    if (button) {
-        button.addEventListener("click", (event) => {
-            event.stopPropagation();
-            activeSlide.classList.add("flipped");
+        window.addEventListener("scroll", () => {
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                    document.body.style.backgroundColor = colors[index];
+                }
+            });
         });
-    }
-  }
 
-  slides.forEach((slide) => {
-    slide.addEventListener("click", () => {
-        if (
-            slide.classList.contains("swiper-slide-active") && slide.classList.contains("flipped")
-        ) {
-            slide.classList.remove("flipped");
+        var swiper = new Swiper(".swiper", {
+            initialSlide: 3,
+            centeredSlides: true,
+            loop: true,
+            speed: 900,
+            grabCursor: true,
+            allowTouchMove: true,
+            effect: "coverflow",
+            coverflowEffect: {
+                rotate: -10,
+                stretch: -45,
+                depth: 90,
+                modifier: 1,
+                slideShadows: true,
+            },
+            mousewheel: {
+                thresholdDelta: 50,
+                sensitivity: 1,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                },
+                600: {
+                    slidesPerView: 3,
+                },
+                1200: {
+                    slidesPerView: 5,
+                },
+            },
+        });
+
+        const slides = document.querySelectorAll(".swiper-slide");
+
+        function flipActiveSlide() {
+            const activeSlide = document.querySelector(".swiper-slide-active");
+            const button = activeSlide.querySelector("button");
+
+            if (button) {
+                button.addEventListener("click", (event) => {
+                    event.stopPropagation();
+                    activeSlide.classList.add("flipped");
+                });
+            }
         }
-    });
-  });
 
-  swiper.on("slideChangeTransitionStart", () => {
-    slides.forEach((slide) => {
-        slide.classList.remove("flipped");
-    });
-    flipActiveSlide();
-  });
+        slides.forEach((slide) => {
+            slide.addEventListener("click", () => {
+                if (
+                    slide.classList.contains("swiper-slide-active") && slide.classList.contains(
+                        "flipped")
+                ) {
+                    slide.classList.remove("flipped");
+                }
+            });
+        });
 
-  flipActiveSlide();
+        swiper.on("slideChangeTransitionStart", () => {
+            slides.forEach((slide) => {
+                slide.classList.remove("flipped");
+            });
+            flipActiveSlide();
+        });
 
-  let btn = document.querySelectorAll('.btn-explore').forEach(btn => {
-    btn.addEventListener('mousemove',(e)=>{
-        let x = e.offsetX;
-        let y = e.offsetY;
-        let btnWidth = btn.clientWidth;
-        let btnHeight = btn.clientHeight;
-        let transX = (x - btnWidth/2);
-        let transY = (y - btnHeight/2);
-        btn.style.transform = `translateX(${transX}px) translateY(${transY}px)`;
+        flipActiveSlide();
 
-        let mx = e.pageX - btn.offsetLeft;
-        let my = e.pageY - btn.offsetTop;
-        btn.style.setProperty('--x', mx + 'px');
-        btn.style.setProperty('--y', my + 'px');
-    })
-    btn.addEventListener('mouseout', (e) => {
-        btn.style.transform = '';
-    })
-  })
-</script>
+        let btn = document.querySelectorAll('.btn-explore').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                let x = e.offsetX;
+                let y = e.offsetY;
+                let btnWidth = btn.clientWidth;
+                let btnHeight = btn.clientHeight;
+                let transX = (x - btnWidth / 2);
+                let transY = (y - btnHeight / 2);
+                btn.style.transform = `translateX(${transX}px) translateY(${transY}px)`;
+
+                let mx = e.pageX - btn.offsetLeft;
+                let my = e.pageY - btn.offsetTop;
+                btn.style.setProperty('--x', mx + 'px');
+                btn.style.setProperty('--y', my + 'px');
+            })
+            btn.addEventListener('mouseout', (e) => {
+                btn.style.transform = '';
+            })
+        })
+    </script>
 </body>
+
 </html>
