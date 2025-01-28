@@ -298,7 +298,7 @@ section {
 
 .profile-card:hover {
   border-radius: 10px;
-  height: 260px;
+  height: 280px;
 }
 
 .profile-card .img {
@@ -326,7 +326,7 @@ section {
 
 .caption {
   text-align: center;
-  transform: translateY(-80px);
+  transform: translateY(-100px);
   opacity: 0;
   transition: .6s;
 }
