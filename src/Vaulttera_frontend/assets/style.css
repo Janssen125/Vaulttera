@@ -124,17 +124,36 @@ nav {
 }
 
 .footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 3rem;
   position: relative;
-  padding-left: 100px;
-  padding-top: 50px;
-  padding-bottom: 30px;
   background-color: var(--tua);
   width: 100vw;
   height: 100%;
 }
 
+.footer .row {
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 2rem;
+}
+
+.copyright {
+  color: var(--text);
+  text-align: center;
+}
+
 .row {
+  display: flex;
+  flex-direction: row;
   padding: 100px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
 }
 
 .section-2 h2 {
