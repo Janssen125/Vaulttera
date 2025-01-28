@@ -11,10 +11,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/cssanimation.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg" data-aos="fade-down">
         <div class="container-fluid">
             <a class="navbar-brand" href="/"> Vaulterra </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -27,7 +28,7 @@
                 </div>
             <ul class="navbar-nav mb-2 mx-3 mb-lg-0">
                 <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/">Home</a>
+                <a class="nav-link nav-active" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="/products">NFT List</a>
@@ -41,30 +42,38 @@
             </div>
         </div>
     </nav>
-    <section class="parallax">
+<div class="parallax">
     <div class="text">
-        <h1>Vaulterra</h1>
+        <h1 class="vaulterra">
+            <div class="cssanimation lePeek sequence" style="display: inline;" data-aos="zoom-in-right">Vaul</div>
+            <span class="terra cssanimation lePeek sequence" style="display: inline; color: #d9e4b2;" data-aos="zoom-in-right">terra</span>
+          </h1>          
         <br>
-        <h2>Scroll to start</h2>
+        <h2 data-aos="zoom-in-down">Scroll to start</h2>
+        <div class="icon-scroll fa-3x" data-aos="zoom-in-down">
+            <i class="fa-solid fa-angle-down fa-fade" style="--fa-animation-duration: 0.9s; --fa-fade-opacity: 0.6;" ></i>
+            <i class="fa-solid fa-angle-down fa-fade" style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.6;"></i>
+            <i class="fa-solid fa-angle-down fa-fade" style="--fa-animation-duration: 1.5s; --fa-fade-opacity: 0.6;"></i>
+            <i class="fa-solid fa-angle-down fa-fade" style="--fa-animation-duration: 2s; --fa-fade-opacity: 0.6;"></i>
+        </div>
     </div>
     <img src="assets/img/background.jpg" alt="" id="par-bg">
+    <img src="assets/img/parallax-3.png" alt="" id="par-3">
     <img src="assets/img/parallax-1.png" alt="" id="par-1">
     <img src="assets/img/parallax-2.png" alt="" id="par-2">
-</section>
+</div>
 
 <div class="separator-par-about"></div>
 
     <section id="about" class="section-2">
-        <div class="container-fluid" data-aos="fade-up">
+        <div class="container-fluid">
 
-            <div class="row position-relative">
+            <div class="row position-relative" data-aos="fade-down" data-aos-delay="100">
 
                 <div class="col-md-6 about-img" style="background-image: url(assets/img/background.jpg);"></div>
 
                 <div class="col-md-7">
-                    <h2>
-                        <div class="cssanimation lePeek sequence"> What is Vaulterra?</div>
-                    </h2>
+                    <h2> What is Vaulterra?</h2>
                     <div class="our-story">
                         <h4>Est 2025</h4>
                         <h3>Our Story</h3>
@@ -84,8 +93,8 @@
             </div>
 
             <div class="row our-team">
-                <h1>Amazing team behind vaulterra!</h1>
-                <div class="col-md-3 my-3">
+                <h1 data-aos="fade-down">Amazing team behind vaulterra!</h1>
+                <div class="col-md-3 my-3" data-aos="fade-right" data-aos-delay="100">
                     <div class="profile-card">
                         <div class="img">
                             <img src="assets/img/VEBRI.png" alt="">
@@ -101,7 +110,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-3 my-3">
+                <div class="col-md-3 my-3" data-aos="fade-down" data-aos-delay="200">
                     <div class="profile-card">
                         <div class="img">
                             <img src="assets/img/VEBRI.png" alt="">
@@ -117,7 +126,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-3 my-3">
+                <div class="col-md-3 my-3" data-aos="fade-up" data-aos-delay="300">
                     <div class="profile-card">
                         <div class="img">
                             <img src="assets/img/VEBRI.png" alt="">
@@ -133,7 +142,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-3 my-3">
+                <div class="col-md-3 my-3" data-aos="fade-left" data-aos-delay="400">
                     <div class="profile-card">
                         <div class="img">
                             <img src="assets/img/VEBRI.png" alt="">
@@ -153,7 +162,7 @@
 </div>
 </section>
 <section class="section-3">
-    <div class="container-fluid">
+    <div class="container-fluid" data-aos="fade-up" data-aos-delay="300">
 
         <div class="earth-container my-3">
             <div class="earth"></div>
@@ -253,11 +262,11 @@
     <section class="section-4" style="margin-top: 240px;">
         <div class="container-fluid">
             <div class="row">
-                <h1 class="flick-text" data-flicker="5" style="text-align: center; font-weight: 600; color: #4E3B31;">
+                <h1 class="flick-text" data-flicker="5" style="text-align: center; font-weight: 600; color: #4E3B31;" data-aos="zoom-in">
                     Current top <span class="flick-span" aria-hidden="true">5</span> NFTs</h1>
 
-                <h1 style="text-align: center; font-weight: 600; color: #4E3B31;">IN MARKET!</h1>
-                <div class="swiper">
+                <h1 style="text-align: center; font-weight: 600; color: #4E3B31;" data-aos="zoom-in">IN MARKET!</h1>
+                <div class="swiper" data-aos="fade-right" data-aos-delay="300">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="card">
@@ -328,14 +337,14 @@
                     <div class="swiper-pagination"></div>
                 </div>
 
-                <div class="col explore-nft my-3">
+                <div class="col explore-nft my-3" data-aos="zoom-in">
                     <a href="nft.html" class="btn-explore"><span>Explore more NFTs!</span></a>
                 </div>
             </div>
         </div>
     </section>
 
-<footer>
+<footer data-aos="fade-up">
     <div class="container-fluid footerContainer">
         <h1 class="Logo">VAULTERRA</h1>
         <div class="footerNav">
@@ -359,7 +368,10 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/letteranimation.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
+    AOS.init();
+
     gsap.from("#par-bg", {
         scrollTrigger : {
             scrub: true
@@ -377,6 +389,12 @@
             scrub: true
         },
         x: 500,
+    })
+    gsap.from("#par-3", {
+        scrollTrigger : {
+            scrub: true
+        },
+        y: 940,
     })
 
         const sections = document.querySelectorAll("section");

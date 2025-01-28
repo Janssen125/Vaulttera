@@ -88,11 +88,19 @@ nav {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  color: var(--text);
+}
+
+.icon-scroll {
+  color: white;
+  display: flex;
+  flex-direction: column;
 }
 
 .text h1 {
   overflow-y: hidden;
   font-size: 10rem;
+  font-weight: 600;
 }
 
 .text h2 {
@@ -112,6 +120,13 @@ nav {
   width: 80%;
   height: 90%;
   transform: translateX(200%);
+}
+
+#par-3 {
+  position: absolute;
+  width: 150%;
+  height: 200%;
+  transform: translate(-17%, 130%);
 }
 
 .section-2 {
