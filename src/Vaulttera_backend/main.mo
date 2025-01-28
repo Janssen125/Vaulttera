@@ -9,7 +9,7 @@ actor {
   type userInfo = {
     name : Text;
     email : Text;
-    bio : Text;
+    bioStatus : Text;
   };
 
   type nft = {
@@ -33,16 +33,17 @@ actor {
   let newUser = {
     name = "Dummy";
     email = "Dummy@gmail.com";
-    bio = "Dummy";
+    bioStatus = "Dummy";
   };
   userData.put(dummyPrincipal, newUser);
+  wallet.put(dummyPrincipal, 1000);
 
-  public query func getDummyUsername() : async Text {
-    switch (userData.get(dummyPrincipal)) {
-      case (?user) return user.name;
-      case null return "No dummy user found.";
-    };
-  };
+  // public query func getDummyUsername() : async Text {
+  //   switch (userData.get(dummyPrincipal)) {
+  //     case (?user) return user.name;
+  //     case null return "No dummy user found.";
+  //   };
+  // };
 
   // User
 
@@ -107,8 +108,15 @@ actor {
     };
   };
 
-  public query func getBalance(user : Principal) : async Nat {
-    return (Option.get(wallet.get(user), 0));
+  public query func getBalance(p : Principal) : async Nat {
+    switch (wallet.get(p)) {
+      case (?balance) {
+        return balance;
+      };
+      case null {
+        return 0;
+      };
+    };
   }
 
 };
