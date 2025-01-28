@@ -16,6 +16,16 @@
   scroll-behavior: smooth;
 }
 
+header {
+  width: 100vw;
+}
+
+html {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 body {
   min-height: 100vh;
   transition: background-color 0.5s ease;
@@ -31,6 +41,18 @@ nav {
   top: 0;
   width: 100%;
   z-index: 1000;
+}
+
+section {
+  max-width: 1280px;
+  height: max-content;
+}
+
+.centerSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .navbar {
@@ -143,14 +165,43 @@ nav {
   align-items: center;
   justify-content: center;
   height: 100vh;
+} */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 3rem;
+  position: relative;
+  background-color: var(--tua);
+  width: 100vw;
+  height: 100%;
+}
+
+.footer .row {
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 2rem;
+}
+
+.copyright {
+  color: var(--text);
+  text-align: center;
 }
 
 .row {
+  display: flex;
+  flex-direction: row;
   padding: 100px;
 }
 
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
 .separator-par-about {
-  background:linear-gradient(180deg, #1f2e33 20%, #4E3B31 80%);
+  background: linear-gradient(180deg, #1f2e33 20%, #4E3B31 80%);
   width: 100vw;
   height: 100px;
 }
@@ -404,6 +455,24 @@ nav {
   gap: 30px;
   margin-bottom: -300px;
   margin-top: -100px;
+}
+
+.card-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-container .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.card-container .col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-container .card {
@@ -751,11 +820,11 @@ footer {
   height: 100%;
 }
 
-.footerContainer{
+.footerContainer {
   padding: 70px 30px 20px;
 }
 
-.footerContainer .Logo{
+.footerContainer .Logo {
   display: flex;
   justify-content: center;
   color: var(--text);
@@ -765,13 +834,13 @@ footer {
   margin: 30px 0;
 }
 
-.footerNav ul{
+.footerNav ul {
   display: flex;
   justify-content: center;
   list-style: none;
 }
 
-.footerNav ul li a{
+.footerNav ul li a {
   color: var(--text);
   margin: 20px;
   text-decoration: none;
@@ -789,6 +858,6 @@ footer {
   padding: 20px;
 }
 
-.footerBottom p{
+.footerBottom p {
   color: var(--text);
 }
