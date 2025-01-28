@@ -34,12 +34,33 @@ nav {
 }
 
 .navbar {
-  background-color: #4e3b31cc;
+  background-color: #4e3b31;
 }
 
-.navbar a {
+.navbar-brand {
+  padding-left: 50px;
+  color: var(--text);
+}
+
+.navbar .nav-link {
+  padding-left: 50px;
   color: var(--text);
   text-decoration: none;
+  margin-right: 50px;
+  border-radius: 20px;
+  width: 80%;
+  text-align: center;
+}
+
+.navbar .nav-link:hover {
+  background-color: var(--muda);
+  border-radius: 20px;
+}
+
+.navbar .nav-active {
+  background-color: var(--muda);
+  border-radius: 20px;
+  color: black;
 }
 
 .parallax {
@@ -81,29 +102,15 @@ nav {
 
 #par-1 {
   position: absolute;
-  width: 30%;
-  height: 50%;
-  transform: translateY(-100%);
+  width: 80%;
+  height: 90%;
+  transform: translateX(-100%);
 }
 
 #par-2 {
   position: absolute;
-  width: 30%;
-  height: 50%;
-  transform: translateX(200%) translateY(-70%);
-}
-
-#par-3 {
-  position: absolute;
-  width: 60%;
-  height: 100%;
-  transform: translateX(-100%);
-}
-
-#par-4 {
-  position: absolute;
-  width: 60%;
-  height: 100%;
+  width: 80%;
+  height: 90%;
   transform: translateX(200%);
 }
 
@@ -154,6 +161,11 @@ nav {
 .col {
   display: flex;
   flex-direction: column;
+}
+.separator-par-about {
+  background:linear-gradient(180deg, #1f2e33 20%, #4E3B31 80%);
+  width: 100vw;
+  height: 100px;
 }
 
 .section-2 h2 {
@@ -243,6 +255,7 @@ nav {
   border-radius: 50%;
   box-shadow: 0 0 22px #3336;
   transition: .6s;
+  left: 20%;
 }
 
 .profile-card:hover {
@@ -403,7 +416,7 @@ nav {
   align-items: center;
   gap: 30px;
   margin-bottom: -300px;
-  margin-top: -200px;
+  margin-top: -100px;
 }
 
 .card-container .card {
@@ -742,4 +755,53 @@ nav {
 .btn-explore:hover::before {
   width: 400px;
   height: 400px;
+}
+
+footer {
+  position: relative;
+  background-color: var(--tua);
+  width: 100vw;
+  height: 100%;
+}
+
+.footerContainer{
+  padding: 70px 30px 20px;
+}
+
+.footerContainer .Logo{
+  display: flex;
+  justify-content: center;
+  color: var(--text);
+}
+
+.footerNav {
+  margin: 30px 0;
+}
+
+.footerNav ul{
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+.footerNav ul li a{
+  color: var(--text);
+  margin: 20px;
+  text-decoration: none;
+  font-size: 1.3em;
+  opacity: 0.7;
+  transition: 0.5s;
+}
+
+.footerNav ul li a:hover {
+  opacity: 1;
+}
+
+.footerBottom {
+  text-align: center;
+  padding: 20px;
+}
+
+.footerBottom p{
+  color: var(--text);
 }
