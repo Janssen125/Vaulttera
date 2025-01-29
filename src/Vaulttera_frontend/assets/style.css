@@ -1128,3 +1128,143 @@ footer {
     font-size: 30px;
   }
 }
+
+
+/* NFT LIST */
+
+.nft-page-container {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: var(--ijo);
+}
+
+.search-filter {
+  outline: none;
+  border: none;
+}
+
+#search-container {
+  margin: 1em 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#search-container input {
+  background-color: transparent;
+  width: 40%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid #110f29;
+  padding: 1em 0.3em;
+  transition: 0.3s;
+}
+#search-container input:focus {
+  border-bottom-color: #6759ff;
+  outline: none;
+  transition: 0.3s;
+}
+#search-container input:-webkit-autofill {
+  background-color: transparent;
+}
+#search-container button {
+  padding: 1em 2em;
+  margin-left: 1em;
+  background-color: #6759ff;
+  color: #ffffff;
+  border-radius: 5px;
+  margin-top: 0.5em;
+}
+
+.search-filter #buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.button-value {
+  border: 2px solid #6759ff;
+  padding: 1em 2.2em;
+  border-radius: 3em;
+  background-color: transparent;
+  color: #6759ff;
+  cursor: pointer;
+}
+
+.scroll-list {
+  width: 100%;
+  max-width: 700px;
+  padding: 25px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .scroll-list {
+      margin-top: 20px;
+  }
+}
+
+
+.scroll-list__wrp {
+  width: 100%;
+  height: 700px;
+  overflow: auto;
+  padding: 50px;
+  box-shadow: 0px 7px 46px 0px rgba(0, 0, 0, 0.3);
+  background: #1c2e4a;
+  border-radius: 8px;
+  background-image: linear-gradient(147deg,
+          #2e3a59 0%, #1a2b46 74%);
+}
+
+
+.scroll-list__wrp .scrollbar-track {
+  display: none !important;
+}
+
+@media screen and (max-width: 768px) {
+  .scroll-list__wrp {
+      padding: 25px;
+  }
+}
+
+.scroll-list__item {
+  width: 100%;
+  height: 155px;
+  display: block;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  background-image: linear-gradient(147deg, #4a90e2 0%, #0072ff 74%);
+  transition: all 0.35s ease-in-out;
+  opacity: 0;
+  transform: scale(0.7);
+  box-shadow: 0px 7px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-list__item.item-hide {
+  opacity: 0;
+  transform: scale(0.7);
+}
+
+.scroll-list__item.item-focus {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.scroll-list__item.item-next {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.scroll-list__item.item-next+.scroll-list__item {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.scroll-list__item:last-child {
+  margin-bottom: 155px;
+}
