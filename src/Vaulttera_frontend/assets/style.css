@@ -1669,3 +1669,113 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
     height: 180px;
   }
 }
+
+/* REVENUE */
+
+.revenue-container {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 30px;
+  background: linear-gradient(-220deg, #A8CBA0, #D9E4B2, #F2F2F2);
+}
+
+.card-revenue {
+  position: relative;
+  max-width: 330px;
+  height: 215px;
+  background: var(--text);
+  margin: 70px 10px;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  transition: .3s ease-in-out;
+}
+
+.card-revenue:hover {
+  height: 390px;
+}
+
+.card-revenue .imgBx-revenue {
+  position: relative;
+  width: 85%;
+  max-height: 85%;
+  top: -100px;
+  left: 20px;
+  z-index: 1;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-revenue .imgBx-revenue img {
+  max-width: 100%;
+  border-radius: 4px;
+}
+
+.card-revenue .content-revenue {
+  position: relative;
+  margin-top: -140px;
+  padding: 10px 15px;
+  text-align: center;
+  color: #111;
+  visibility: hidden;
+  opacity: 0;
+  transition: .3s ease-in-out;
+}
+
+.card-revenue:hover .content-revenue {
+  visibility: visible;
+  opacity: 1;
+  margin-top: -80px;
+  transition-delay: .3s;
+}
+
+.create-nft-button {
+  margin-bottom: 50px;
+  margin-left: 10px;
+}
+
+.create-nft-button a {
+  width: 200px;
+  background-color: var(--muda);
+  color: var(--text);
+  transition: .3s;
+}
+
+.create-nft-button a:hover {
+  background-color: var(--tua);
+  color: var(--text);
+  transition: .3s;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.revenue-no-nft {
+  text-align: center;
+  padding-top: 100px;
+  font-size: 8em;
+  line-height: 1em;
+  color: var(--text);
+  text-shadow: 0 1px 0 #efefef,
+               0 2px 0 #efefef,
+               0 3px 0 #efefef,
+               0 4px 0 #efefef,
+               0 30px 5px rgba(0, 0, 0, 0.1);
+  animation: animatenorevenue 5s linear infinite;
+}
+@keyframes animatenorevenue {
+  0% {
+    transform: rotate(5deg);
+  }
+  25% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
+}
