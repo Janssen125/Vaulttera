@@ -38,12 +38,12 @@ actor {
   userData.put(dummyPrincipal, newUser);
   wallet.put(dummyPrincipal, 1000);
 
-  // public query func getDummyUsername() : async Text {
-  //   switch (userData.get(dummyPrincipal)) {
-  //     case (?user) return user.name;
-  //     case null return "No dummy user found.";
-  //   };
-  // };
+  public query func getDummyUsername() : async Text {
+    switch (userData.get(dummyPrincipal)) {
+      case (?user) return user.name;
+      case null return "No dummy user found.";
+    };
+  };
 
   // User
 
@@ -58,19 +58,22 @@ actor {
     };
   };
 
-  public shared ({ caller }) func createUser(user : userInfo) : async Result<(), Text> {
+  public query func checkEmail(email : Text) : async Result<(), Text> {
+    switch (userData.get(Principal.fromText(email))) {
+      case null {
+        return #ok(());
+      };
+      case (?_user) {
+        return #err("Email already exists");
+      };
+    };
+  };
+
+  public query func createUser(caller : Principal, user : userInfo) : async Result<(), Text> {
     switch (userData.get(caller)) {
       case null {
         userData.put(caller, user);
-        let userBalance = await addBalance(caller, 1000);
-        switch (userBalance) {
-          case (#ok(_)) {
-            return #ok();
-          };
-          case (#err(_errorMessage)) {
-            return #err("Something wrong while adding balance");
-          };
-        };
+        return #ok();
       };
       case (?_registered) {
         return #err("User Registered");
