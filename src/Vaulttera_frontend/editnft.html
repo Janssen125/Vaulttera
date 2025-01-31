@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFT Details</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+
+<header>
+    <nav class="navbar navbar-expand-lg" data-aos="fade-down">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"> Vaulterra </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <div class="me-auto">
+                    <a href=""></a>
+                </div>
+            <ul class="navbar-nav mb-2 mx-3 mb-lg-0">
+                <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link nav-active" href="/products">NFT List</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/about-us">Revenue</a>
+                </li>
+                <li class="nav-item" id="login">
+                </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<body>
+    <div class="container-fluid create-nft-form" data-aos="fade-right">
+        <form class="row g-3" action="" method="POST" enctype="multipart/form-data" data-aos-delay="300">
+            <h1 style="font-weight: 600;">EDIT (Nama NFT)</h1>
+            <div class="col-md-6">
+              <label for="nftname" class="form-label">NFT Name</label>
+              <input type="text" class="form-control" id="nftname" placeholder="Your nft name. . . ">
+            </div>
+            <div class="col-md-6">
+              <label for="Author" class="form-label">Author</label>
+              <input type="text" class="form-control" id="Author" disabled value="nama author">
+            </div>
+            <div class="col-12">
+              <label for="description" class="form-label">Description</label>
+              <textarea type="text" class="form-control" id="description">NFT description. . . </textarea>
+            </div>
+            <div class="col-md-4">
+                <label for="image" class="form-label">NFT image</label>
+                <input class="form-control form-control" id="image" type="file">
+            </div>
+            <div class="col-md-4">
+              <label for="category" class="form-label">Category</label>
+              <select id="category" class="form-select">
+                <option selected>Select NFT Category</option>
+                <option>...</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <label for="price" class="form-label">Price (IDR)</label>
+              <input type="number" class="form-control" id="price" placeholder="30000">
+            </div>
+            <div class="col-md-2">
+              <label for="slot" class="form-label">Maximum Slot</label>
+              <input type="number" class="form-control" id="slot" placeholder="10">
+            </div>
+            <div class="col-md-4">
+                <img src="#" alt="" id="newImg" onerror="this.src='assets/img/no-img.png'">
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+          </form>
+    </div>
+</body>
+
+<footer>
+    <div class="container-fluid footerContainer">
+        <h1 class="Logo">VAULTERRA</h1>
+        <div class="footerNav">
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">NFT List</a></li>
+                <li><a href="">Revenue</a></li>
+            </ul>
+        </div>
+        <div class="footerBottom">
+            <p>Copyright &copy;2025</p>
+        </div>
+    </div>
+</footer> 
+    <script src="../../dist/bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init();
+
+    image.onchange = evt => {
+        const[file]=image.files
+        
+        if(file) {
+            newImg.src=URL.createObjectURL(file)
+        }
+    }
+    </script>
+</html>

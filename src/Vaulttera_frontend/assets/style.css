@@ -59,14 +59,22 @@ section {
   background-color: #4e3b31;
 }
 
-.navbar-brand {
-  padding-left: 50px;
+.navbar a{
   color: var(--text);
 }
 
-.navbar .nav-link {
-  padding-left: 50px;
+.navbar a:hover {
   color: var(--text);
+}
+
+.navbar-brand {
+  padding-left: 100px;
+}
+
+.navbar .nav-link {
+  color: var(--text);
+  margin-top: 5px;
+  margin-bottom: 5px;
   text-decoration: none;
   margin-right: 50px;
   border-radius: 20px;
@@ -1778,4 +1786,32 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
   100% {
     transform: rotate(5deg);
   }
+}
+
+/* CREATE NFT */
+
+.create-nft-form {
+  background:linear-gradient(180deg, #A8CBA0, #D9E4B2);
+  min-height: 90vh;
+  min-width: 90vw;
+  color: var(--tua);
+}
+
+.create-nft-form button {
+  background-color: var(--muda);
+  color: var(--text);
+  border: none;
+  transition: .3s;
+}
+
+.create-nft-form button:hover {
+  background-color: var(--tua);
+  color: var(--text);
+  transition: .3s;
+}
+
+.create-nft-form img {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 10px;
 }
