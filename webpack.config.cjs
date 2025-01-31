@@ -60,9 +60,9 @@ const frontend_entry = path.join("src", frontendDirectory, "index.html");
 module.exports = {
   target: "web",
   mode: isDevelopment ? "development" : "production",
-  entry: './src/Vaulttera_frontend/js/motoko.js',  // your entry JavaScript file
+  entry: {motoko: './src/Vaulttera_frontend/js/motoko.js', login: './src/Vaulttera_frontend/js/login.js'},
   output: {
-    filename: 'bundle.js',
+    filename: '[name]bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
   devtool: isDevelopment ? "source-map" : false,
@@ -96,6 +96,7 @@ module.exports = {
     alias: {
       '@dfinity/agent': path.resolve(__dirname, 'node_modules/@dfinity/agent'),
     },
+    fullySpecified: false
   },
   plugins: [
     new HtmlWebpackPlugin({

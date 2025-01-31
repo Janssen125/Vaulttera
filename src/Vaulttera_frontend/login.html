@@ -51,10 +51,10 @@
         <div class="form-container">
             <div class="form-box login">
 
-                <form action="#" method="POST" id="login">
+                <form id="login">
                     <h1>Login</h1>
                     <div class="input-box">
-                        <input type="text" id="lusername" name="username" placeholder="username" required>
+                        <input type="email" id="lemail" name="email" placeholder="email@gmail.com" required>
                         <i class="bx bx-user"></i>
                     </div>
                     <div class="input-box">
@@ -64,20 +64,17 @@
                     <div class="forgot-link">
                         <a href="">Forgot Password?</a>
                     </div>
-                    <button type="submit" class="btn">Login</button>
-                    <!-- <p>or Login with internet identity</p>
-                <button href="" class="btn">Internet identity</button> -->
-                    <div id="g_id_onload"
-                        data-client_id="152088522004-5fp0571nfpn52097ajd9s0d1mf8m7vpe.apps.googleusercontent.com"
-                        data-callback="handleCredentialResponse" data-auto_prompt="false" style="padding-top: 30px;">
-                    </div>
-                    <div id="google-sign-in-button"></div>
-
-                </form>
+                    <button type="button" class="btn" id="loginBtn">Login</button>
+                <div id="g_id_onload"
+                    data-client_id="152088522004-5fp0571nfpn52097ajd9s0d1mf8m7vpe.apps.googleusercontent.com"
+                    data-callback="handleCredentialResponse" data-auto_prompt="false" style="padding-top: 30px;">
+                </div>
+                <div id="google-sign-in-button"></div>
+            </form>
             </div>
 
             <div class="form-box register">
-                <form action="#" method="POST" id="register" onsubmit="">
+                <form action="#" method="POST" id="register">
                     <h1>Register</h1>
                     <div class="input-box">
                         <input type="text" id="username" name="username" placeholder="username"
@@ -100,7 +97,7 @@
                             onchange="checkBox()" required> -->
                         <i class="bx bx-lock"></i>
                     </div>
-                    <button type="submit" class="btn" id="register">register</button>
+                    <button type="submit" class="btn">register</button>
                     <!-- <p>or register with internet identity</p> -->
                     <!-- <button type="button" class="btn" id="identityLogin">Internet identity</button>
                 <button id="greet">A</button> -->
@@ -148,8 +145,8 @@
 <script type="text/javascript"
     src="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/letteranimation.min.js"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script src="js/login.js"></script>
-<script src="../../dist/bundle.js"></script>
+<script src="js/google.js"></script>
+<script src="../../dist/loginbundle.js" defer></script>
 <script>
     AOS.init();
 

@@ -6,179 +6,224 @@ import {
 import {
     Principal
 } from '@dfinity/principal';
-import {
-    AuthClient
-} from "@dfinity/auth-client";
-import {
-    createActor
-} from "../../declarations/Vaulttera_backend/index.js";
+
+// IDL factory
+const idlFactory = ({
+    IDL
+}) => {
+    const userInfo = IDL.Record({
+        name: IDL.Text,
+        email: IDL.Text,
+        bioStatus: IDL.Text,
+        password: IDL.Text,
+    });
+
+    const Result = IDL.Variant({
+        ok: IDL.Null,
+        err: IDL.Text,
+    });
+
+    return IDL.Service({
+        getUserInfo: IDL.Func(
+            [IDL.Principal],
+            [
+                IDL.Variant({
+                    ok: IDL.Record({
+                        name: IDL.Text,
+                        email: IDL.Text,
+                        bioStatus: IDL.Text,
+                        password: IDL.Text,
+                    }),
+                    err: IDL.Text,
+                }),
+            ],
+            ["query"]
+        ),
+        getBalance: IDL.Func([IDL.Principal], [IDL.Nat], ["query"]),
+        getDummyUsername: IDL.Func([], [IDL.Text], ["query"]),
+        createUser: IDL.Func([IDL.Principal, userInfo], [Result], []),
+        addBalance: IDL.Func([IDL.Principal, IDL.Nat], [Result], []),
+        checkEmail: IDL.Func(
+            [IDL.Text],
+            [IDL.Variant({
+                ok: IDL.Principal,
+                err: IDL.Text
+            })],
+            []
+        ),
+    });
+};
+
+const agent = new HttpAgent({
+    host: "http://127.0.0.1:4943"
+});
+agent.fetchRootKey().then(() => {
+    console.log("Root key fetched successfully");
+}).catch((error) => {
+    console.error("Error fetching root key:", error);
+});
+
+const canisterId = "bkyz2-fmaaa-aaaaa-qaaaq-cai";
+const actor = Actor.createActor(idlFactory, {
+    agent,
+    canisterId
+});
 document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM Content Loaded");
 
-    const canisterId = "bnz7o-iuaaa-aaaaa-qaaaa-cai";
     console.log("Initializing IDL Factory");
-
-    // IDL factory
-    const idlFactory = ({
-        IDL
-    }) => {
-        return IDL.Service({
-            getUserInfo: IDL.Func([IDL.Principal], [IDL.Variant({
-                ok: IDL.Record({
-                    name: IDL.Text,
-                    email: IDL.Text,
-                    bioStatus: IDL.Text
-                }),
-                err: IDL.Text
-            })], ["query"]),
-            getBalance: IDL.Func([IDL.Principal], [IDL.Nat], ["query"]),
-            getDummyUsername: IDL.Func([], [IDL.Text], ["query"]),
-            createUser: IDL.Func(
-                [IDL.Principal, IDL.Record({
-                    name: IDL.Text,
-                    email: IDL.Text,
-                    bioStatus: IDL.Text
-                })],
-                [IDL.Variant({
-                    ok: IDL.Null,
-                    err: IDL.Text
-                })],
-                []
-            ),
-            addBalance: IDL.Func([IDL.Principal, IDL.Nat], [IDL.Variant({
-                ok: IDL.Null,
-                err: IDL.Text
-            })], []),
-        })
-    }
-
-    // Create the agent
-    const agent = new HttpAgent({
-        host: "http://127.0.0.1:4943"
-    });
-    agent.fetchRootKey().then(() => {
-        console.log("Root key fetched successfully");
-    }).catch((error) => {
-        console.error("Error fetching root key:", error);
-    });
-
-    // Create the actor
-    let actor = Actor.createActor(idlFactory, {
-        agent,
-        canisterId
-    });
 
     async function fetchUserInfo() {
         try {
             const principal = sessionStorage.getItem("principal");
+            if (!principal) {
+                console.log("Principal not found in sessionStorage.");
+                return;
+            };
+
             const principalObject = Principal.fromText(principal);
-
             const result = await actor.getUserInfo(principalObject);
-
             if ("ok" in result) {
-                console.log(userInfo.name);
                 const userInfo = result.ok;
+                console.log(userInfo.name);
                 document.getElementById("username").innerText = userInfo.name;
                 document.getElementById("email").innerHTML = userInfo.email;
                 document.getElementById("bio").innerHTML = userInfo.bioStatus;
                 const balance = await actor.getBalance(principalObject);
                 document.getElementById("balance").innerHTML = balance;
             } else if ("err" in result) {
-                document.getElementById("username").innerText = 'Error: ${result.err}';
-                document.getElementById("email").innerText = 'Error: ${result.err}';
-                document.getElementById("bio").innerText = 'Error: ${result.err}';
-                document.getElementById("balance").innerText = 'Error: ${result.err}';
+                document.getElementById("username").innerText = `Error: ${result.err}`;
+                document.getElementById("email").innerText = `Error: ${result.err}`;
+                document.getElementById("bio").innerText = `Error: ${result.err}`;
+                document.getElementById("balance").innerText = `Error: ${result.err}`;
             } else {
-                console.log("Nuh uh");
-            }
+                console.log("Unexpected result format");
+            };
         } catch (error) {
-            console.log("Error Fetching Data..");
-        }
-    }
-    fetchUserInfo();
-
-    function register() {
-        let username = document.getElementById("username");
-        let email = document.getElementById("email");
-        let password = document.getElementById("password");
-      
-        let newUser = {
-          name: username.value,
-          email: email.value,
-          password: password.value
+            console.log("Error Fetching Data..", error);
         };
-
-        
-      }
-
-    // const greetButton = document.getElementById("greet");
-    // greetButton.onclick = async (e) => {
-    //     e.preventDefault();
-
-    //     greetButton.setAttribute("disabled", true);
-
-    //     // Interact with backend actor, calling the greet method
-    //     const greeting = await actor.getDummyUsername();
-
-    //     greetButton.removeAttribute("disabled");
-
-    //     console.log(greeting);
-
-    //     return false;
-    // };
-
-    // const loginButton = document.getElementById("identityLogin");
-    // loginButton.onclick = async (e) => {
-    //     e.preventDefault();
-
-    //     // create an auth client
-    //     let authClient = await AuthClient.create();
-
-    //     console.log(process.env.II_URL);
-
-
-    //     // start the login process and wait for it to finish
-    //     await new Promise((resolve) => {
-    //         authClient.login({
-    //             identityProvider: "http://127.0.0.1:5500",
-    //             onSuccess: resolve,
-    //         });
-    //     });
-
-    //     // At this point we're authenticated, and we can get the identity from the auth client:
-    //     const identity = authClient.getIdentity();
-    //     const principal = identity.getPrincipal().toText();
-    //     // Using the identity obtained from the auth client, we can create an agent to interact with the IC.
-    //     const agent = new HttpAgent({
-    //         host: "http://127.0.0.1:5500",
-    //         identity
-    //     });
-
-    //     // Using the interface description of our webapp, we create an actor that we use to call the service methods.
-    //     actor = Actor.createActor(idlFactory, {
-    //         agent,
-    //         canisterId,
-    //     });
-
-    //     console.log(document.getElementById("username")); // Should NOT be null
-    //     console.log(document.getElementById("username").value); // Should return the input value
-
-    //     let userInfo = {
-    //         name: document.getElementById("username").value,
-    //         email: document.getElementById("email").value,
-    //         bioStatus: "My Bio",
-    //     }
-    //     console.log("Caller: ", identity.getPrincipal().toString());
-    //     try {
-    //         const result = await actor.createUser(identity.getPrincipal(), userInfo);
-    //         const balanceAdd = await actor.addBalance(principal, 1000); 
-    //         console.log("User created:", result);
-    //         sessionStorage.setItem("principal", principal);
-    //         alert("Success");
-    //     } catch (error) {
-    //         console.error("Error:", error);
-    //     }
-
-    //     return false;
-    // };
+    };
+    fetchUserInfo();
 });
+async function createIdentity(identityName, newUser) {
+    try {
+
+        const response = await fetch("http://localhost:3000/create-identity", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                identityName
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("New Principal:", data.principal);
+
+        if (!data.principal) {
+            throw new Error("Principal creation failed");
+        }
+
+        const userPrincipal = Principal.fromText(data.principal);
+        const registerUserResult = await actor.createUser(userPrincipal, newUser);
+
+        if ("ok" in registerUserResult) {
+            alert("User Registered Successfully");
+            sessionStorage.setItem("principal", userPrincipal);
+            location.href = "./index.html";
+        } else {
+            console.log("Error Registering User");
+        }
+    } catch (error) {
+        console.error("Error creating identity:", error);
+        console.log("An error occurred while creating identity.");
+    }
+
+};
+export async function register(username, email, password) {
+
+    const newUser = {
+        name: username,
+        email: email,
+        bioStatus: "My Bio",
+        password: password
+    };
+    console.log(email);
+
+    try {
+        const check = await actor.checkEmail(email);
+        console.log(check);
+
+        if (!check) {
+            alert("Error: Check result is undefined or null.");
+            return;
+        }
+        if ("ok" in check) {
+            alert("Email Already Exists");
+        } else if ("err" in check) {
+            const userPrincipal = createIdentity(email.value, newUser);
+            const registerUserResult = await actor.createUser(userPrincipal, newUser);
+            if ("ok" in registerUserResult) {
+                alert("User Registered Successfully");
+                sessionStorage.setItem("principal", userPrincipal);
+            } else {
+                alert("Error Registering User");
+            }
+        }
+    } catch (error) {
+        console.log("Error during registration:", error);
+        console.log("An error occurred during registration.");
+    };
+};
+
+export async function login(lemail, lpassword) {
+    try {
+        const emailCheck = await actor.checkEmail(lemail);
+        console.log(emailCheck);
+        if ("ok" in emailCheck) {
+            console.log(emailCheck.ok.toText());
+            
+            const userInfo = await actor.getUserInfo(emailCheck.ok);
+            console.log(userInfo);
+            
+            console.log(userInfo.ok.password);
+            console.log(lpassword);
+            if (userInfo.ok.password == lpassword) {
+                sessionStorage.setItem("principal", JSON.stringify(emailCheck.ok));
+                alert("Login Success");
+                location.href = "./index.html";
+            }
+            else{
+                alert("Incorrect Password");
+            }
+        } else {
+            alert("Email or Password Incorrect");
+        }
+    } catch (error) {
+        console.log("Error during login:", error);
+    }
+};
+
+export async function checkGoogle() {
+    const data = sessionStorage.getItem("google");
+    const noJsonData = JSON.parse(data);
+    const emailCheck = await actor.checkEmail(noJsonData.email);
+    console.log(emailCheck);
+    if("ok" in emailCheck) {
+        const user = actor.getUserInfo(emailCheck);
+        console.log(user);
+        
+        sessionStorage.setItem(JSON.stringify(user));
+    }
+    else if("err" in emailCheck){
+        const username = noJsonData.name;
+        const email = noJsonData.email;
+        const password = "googleAuth";
+        register(username, email, password);
+    };
+};

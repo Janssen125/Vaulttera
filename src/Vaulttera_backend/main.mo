@@ -2,6 +2,10 @@ import HashMap "mo:base/HashMap";
 import Principal "mo:base/Principal";
 import Result "mo:base/Result";
 import Option "mo:base/Option";
+import Array "mo:base/Array";
+import Nat8 "mo:base/Nat8";
+import Random "mo:base/Random";
+import Blob "mo:base/Blob";
 actor {
 
   // Types
@@ -10,6 +14,7 @@ actor {
     name : Text;
     email : Text;
     bioStatus : Text;
+    password : Text;
   };
 
   type nft = {
@@ -34,6 +39,7 @@ actor {
     name = "Dummy";
     email = "Dummy@gmail.com";
     bioStatus = "Dummy";
+    password = "Dummy";
   };
   userData.put(dummyPrincipal, newUser);
   wallet.put(dummyPrincipal, 1000);
@@ -43,6 +49,10 @@ actor {
       case (?user) return user.name;
       case null return "No dummy user found.";
     };
+  };
+
+  public func generatePrincipalFromText(text : Text) : async Principal {
+    return Principal.fromText(text);
   };
 
   // User
@@ -58,18 +68,16 @@ actor {
     };
   };
 
-  public query func checkEmail(email : Text) : async Result<(), Text> {
-    switch (userData.get(Principal.fromText(email))) {
-      case null {
-        return #ok(());
-      };
-      case (?_user) {
-        return #err("Email already exists");
+  public func checkEmail(email : Text) : async Result.Result<Principal, Text> {
+    for ((principal, user) in userData.entries()) {
+      if (user.email == email) {
+        return #ok(principal);
       };
     };
+    return #err("No Email");
   };
 
-  public query func createUser(caller : Principal, user : userInfo) : async Result<(), Text> {
+  public func createUser(caller : Principal, user : userInfo) : async Result<(), Text> {
     switch (userData.get(caller)) {
       case null {
         userData.put(caller, user);

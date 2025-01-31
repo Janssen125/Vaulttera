@@ -2,7 +2,7 @@
   "name": "vaulttera",
   "type": "module",
   "scripts": {
-    "start": "npm start --workspaces --if-present",
+    "start": "react-scripts start",
     "prebuild": "npm run prebuild --workspaces --if-present",
     "build": "npm run build --workspaces --if-present",
     "pretest": "npm run prebuild --workspaces --if-present",
@@ -15,7 +15,11 @@
   "workspaces": [],
   "dependencies": {
     "@dfinity/agent": "^2.2.0",
-    "dotenv": "^16.4.7"
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "react-scripts": "^5.0.1"
   },
   "description": "Coba buat projek web3 buat hackaton",
   "version": "1.0.0",
@@ -45,5 +49,17 @@
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
