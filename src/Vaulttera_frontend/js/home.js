@@ -10,4 +10,5 @@ document.addEventListener("DOMContentLoaded", function () {
         const loginButton = '<a class="nav-link" href="login.html">Login</a>';
         document.getElementById("login").innerHTML = loginButton;
     }
+
 });
