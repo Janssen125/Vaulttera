@@ -2,7 +2,7 @@
 
 Coba buat projek web3 buat hackaton
 
-- [V] Login Page, Register Page, Change Password
+- [x] Login Page, Register Page, Change Password
 - [ ] Landing Page
 - [ ] NFT List
 - [ ] NFT Detail
@@ -11,12 +11,12 @@ Coba buat projek web3 buat hackaton
 - [ ] NFT Buy/Sell
 - [ ] Wallet
 
-Requirement
-Node.js (https://nodejs.org/en/download)
-dfx (https://internetcomputer.org/docs/current/developer-docs/getting-started/install/)
-ngrok (if want to use google sign in) (https://download.ngrok.com/downloads/windows?tab=download)
+<h1>Requirement</h1>
+Node.js (https://nodejs.org/en/download)<br>
+dfx (https://internetcomputer.org/docs/current/developer-docs/getting-started/install/)<br>
+ngrok (if want to use google sign in) (https://download.ngrok.com/downloads/windows?tab=download)<br>
 
-Running Guide
+<h1>Running Guide</h1>
 
 1. Clone repository
 2. Open new wsl Terminal
@@ -27,7 +27,7 @@ Running Guide
 7. Open wsl at "Vaulttera/src/Vaulttera_frontend/js"
 8. Type "node server.js"
 
-Use Google Sign In Guide
+<h2>Use Google Sign In Guide</h2>
 
 Video Reference https://youtu.be/PctSxrQ3JrI
 
