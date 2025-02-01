@@ -217,15 +217,13 @@ export async function checkGoogle() {
         const password = "googleAuth";
         register(username, email, password);
         sessionStorage.setItem("google", noJsonData.picture);
-        // location.href = "index.html";
+        location.href = "index.html";
     };
 };
 
 export async function editProfile(p, u, e, b) {
     const legitPrincipa = Principal.fromText(p.__principal__);
     const searchForPassword = await actor.getUserInfo(legitPrincipa);
-    console.log(searchForPassword);
-    console.log(searchForPassword.ok.password);
     const updatedUser = {
         name: u,
         email: e,
@@ -237,5 +235,27 @@ export async function editProfile(p, u, e, b) {
         return true;
     } else {
         return false;
-    }
+    };
+};
+
+export async function editPass(p, cpass, pass) {
+    const legitPrincipa = Principal.fromText(p.__principal__);
+    const userInfo = await actor.getUserInfo(legitPrincipa);
+    if(userInfo.ok.password != cpass) {
+        return false;;
+    };
+    const updatedUser = {
+        name: userInfo.ok.name,
+        email: userInfo.ok.email,
+        bioStatus: userInfo.ok.bioStatus,
+        password: pass,
+    };
+    
+    const result = await actor.updateUser(legitPrincipa, updatedUser);
+    if ("ok" in result) {
+        return true;
+    } else {
+        return false;
+    };
+
 }

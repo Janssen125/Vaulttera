@@ -2,7 +2,7 @@
 
 Coba buat projek web3 buat hackaton
 
-- [ ] Login Page, Register Page, Forgot Password
+- [V] Login Page, Register Page, Change Password
 - [ ] Landing Page
 - [ ] NFT List
 - [ ] NFT Detail
@@ -14,6 +14,7 @@ Coba buat projek web3 buat hackaton
 Requirement
 Node.js (https://nodejs.org/en/download)
 dfx (https://internetcomputer.org/docs/current/developer-docs/getting-started/install/)
+ngrok (if want to use google sign in)
 
 Running Guide
 

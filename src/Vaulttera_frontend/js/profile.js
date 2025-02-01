@@ -1,6 +1,7 @@
 import {
     fetchUserInfo,
-    editProfile
+    editProfile,
+    editPass
 } from "./motoko.js";
 document.addEventListener("DOMContentLoaded", async function () {
     const data = await fetchUserInfo();
@@ -23,6 +24,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         const username = document.getElementById("usernameIn").value;
         const email = document.getElementById("email").value;
         const bio = document.getElementById("bio").value;
+        if (!username || !email || !bio) {
+            alert("Input Must Have Value");
+            return;
+        };
         const principal = JSON.parse(sessionStorage.getItem("principal"));
         const result = await editProfile(principal, username, email, bio);
         if (result) {
@@ -30,6 +35,30 @@ document.addEventListener("DOMContentLoaded", async function () {
             location.href = "index.html";
         } else {
             alert("Failed to update profile");
-        }
+        };
+    });
+
+    document.getElementById("changePassBtn").addEventListener("click", async function () {
+        const currPass = document.getElementById("curPass").value;
+        const newPass = document.getElementById("newPass").value;
+        const newPass2 = document.getElementById("newPass2").value;
+
+        if (!currPass || !newPass || !newPass2) {
+            alert("Input Must Have Value");
+            return;
+        };
+        if (newPass != newPass2) {
+            alert("Password does not match");
+            return;
+        };
+        const principal = JSON.parse(sessionStorage.getItem("principal"));
+        const result = await editPass(principal, currPass, newPass);
+        if (result) {
+            alert("Password updated successfully");
+            location.href = "index.html";
+        } else {
+            alert("Current Password Incorrect");
+        };
+
     });
 });
