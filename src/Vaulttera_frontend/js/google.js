@@ -14,12 +14,7 @@ function handleCredentialResponse(response) {
     email: data.email,
     picture: data.picture,
   };
-
-  // Populate user info on the UI
-//   document.getElementById("name").innerHTML = data.name;
-//   document.getElementById("image").src = data.picture;
-//   document.getElementById("email").innerHTML = data.email;
-
+  
   googleUser = data;
   
   sessionStorage.setItem("google", JSON.stringify(newUser));

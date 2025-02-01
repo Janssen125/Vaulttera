@@ -6,7 +6,8 @@ import {
 import {
     Principal
 } from '@dfinity/principal';
-
+import dotenv from "dotenv";
+dotenv.config();
 // IDL factory
 const idlFactory = ({
     IDL
@@ -64,7 +65,7 @@ agent.fetchRootKey().then(() => {
     console.error("Error fetching root key:", error);
 });
 
-const canisterId = "bkyz2-fmaaa-aaaaa-qaaaq-cai";
+const canisterId = process.env.CANISTER_ID_VAULTTERA_BACKEND;
 const actor = Actor.createActor(idlFactory, {
     agent,
     canisterId

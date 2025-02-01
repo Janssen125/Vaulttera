@@ -95,6 +95,10 @@ module.exports = {
       events: require.resolve("events/"),
       stream: require.resolve("stream-browserify/"),
       util: require.resolve("util/"),
+      path: require.resolve("path-browserify"),
+      os: require.resolve("os-browserify/browser"),
+      crypto: require.resolve("crypto-browserify"),
+      vm: require.resolve("vm-browserify"),
     },
     alias: {
       '@dfinity/agent': path.resolve(__dirname, 'node_modules/@dfinity/agent'),

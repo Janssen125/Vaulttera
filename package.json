@@ -17,9 +17,13 @@
     "@dfinity/agent": "^2.2.0",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
+    "crypto-browserify": "^3.12.1",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "react-scripts": "^5.0.1"
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
+    "react-scripts": "^5.0.1",
+    "vm-browserify": "^1.1.2"
   },
   "description": "Coba buat projek web3 buat hackaton",
   "version": "1.0.0",
