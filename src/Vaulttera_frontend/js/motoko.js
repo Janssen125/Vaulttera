@@ -74,36 +74,35 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Initializing IDL Factory");
 });
 
-    export async function fetchUserInfo() {
-        try {
-            const principal = sessionStorage.getItem("principal");
-            if (!principal) {
-                console.log("Principal not found in sessionStorage.");
-                return;
-            };
+export async function getBalance() {
+    const balance = await actor.getBalance({
+        principal: actor.getPrincipal()
+    });
+    console.log(balance);
+    return balance;
+};
 
-            const principalObject = Principal.fromText(principal);
-            const result = await actor.getUserInfo(principalObject);
-            if ("ok" in result) {
-                const userInfo = result.ok;
-                console.log(userInfo.name);
-                document.getElementById("username").innerText = userInfo.name;
-                document.getElementById("email").innerHTML = userInfo.email;
-                document.getElementById("bio").innerHTML = userInfo.bioStatus;
-                const balance = await actor.getBalance(principalObject);
-                document.getElementById("balance").innerHTML = balance;
-            } else if ("err" in result) {
-                document.getElementById("username").innerText = `Error: ${result.err}`;
-                document.getElementById("email").innerText = `Error: ${result.err}`;
-                document.getElementById("bio").innerText = `Error: ${result.err}`;
-                document.getElementById("balance").innerText = `Error: ${result.err}`;
-            } else {
-                console.log("Unexpected result format");
-            };
-        } catch (error) {
-            console.log("Error Fetching Data..", error);
+export async function fetchUserInfo() {
+    try {
+        const principal = sessionStorage.getItem("principal");
+        if (!principal) {
+            console.log("Principal not found in sessionStorage.");
+            return;
         };
+        const principalObject = Principal.fromText(principal);
+        const result = await actor.getUserInfo(principalObject);
+        if ("ok" in result) {
+            const userInfo = result.ok;
+            return userInfo;
+        } else if ("err" in result) {
+            return result.err;
+        } else {
+            console.log("Unexpected result format");
+        };
+    } catch (error) {
+        console.log("Error Fetching Data..", error);
     };
+};
 async function createIdentity(identityName, newUser) {
     try {
 
@@ -186,18 +185,17 @@ export async function login(lemail, lpassword) {
         console.log(emailCheck);
         if ("ok" in emailCheck) {
             console.log(emailCheck.ok.toText());
-            
+
             const userInfo = await actor.getUserInfo(emailCheck.ok);
             console.log(userInfo);
-            
+
             console.log(userInfo.ok.password);
             console.log(lpassword);
             if (userInfo.ok.password == lpassword) {
                 sessionStorage.setItem("principal", JSON.stringify(emailCheck.ok));
                 alert("Login Success");
                 location.href = "./index.html";
-            }
-            else{
+            } else {
                 alert("Incorrect Password");
             }
         } else {
@@ -213,13 +211,12 @@ export async function checkGoogle() {
     const noJsonData = JSON.parse(data);
     const emailCheck = await actor.checkEmail(noJsonData.email);
     console.log(emailCheck);
-    if("ok" in emailCheck) {
+    if ("ok" in emailCheck) {
         const user = actor.getUserInfo(emailCheck);
         console.log(user);
-        
+
         sessionStorage.setItem(JSON.stringify(user));
-    }
-    else if("err" in emailCheck){
+    } else if ("err" in emailCheck) {
         const username = noJsonData.name;
         const email = noJsonData.email;
         const password = "googleAuth";

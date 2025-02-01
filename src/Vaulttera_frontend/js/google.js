@@ -29,11 +29,6 @@ function handleCredentialResponse(response) {
 function signOut() {
   google.accounts.id.disableAutoSelect(); // Disable auto-select if any
   googleUser = null; // Clear the user data
-
-  // Reset UI
-//   document.getElementById("name").innerHTML = '';
-//   document.getElementById("image").src = '';
-//   document.getElementById("email").innerHTML = '';
   console.log("User signed out.");
 }
 

@@ -6,9 +6,9 @@ const TerserPlugin = require("terser-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
 const network =
-    process.env.DFX_NETWORK ||
-    (process.env.NODE_ENV === "production" ? "ic" : "local");
-    
+  process.env.DFX_NETWORK ||
+  (process.env.NODE_ENV === "production" ? "ic" : "local");
+
 function initCanisterEnv() {
   let localCanisters, prodCanisters;
   try {
@@ -42,13 +42,13 @@ const isDevelopment = process.env.NODE_ENV !== "production";
 let internetIdentityUrl;
 
 if (network === "local") {
-    if (canisterEnvVariables["INTERNET_IDENTITY_CANISTER_ID"]) {
-        internetIdentityUrl = `http://${canisterEnvVariables["INTERNET_IDENTITY_CANISTER_ID"]}.localhost:4943/`;
-    } else {
-        throw new Error("INTERNET_IDENTITY_CANISTER_ID is not set!");
-    }
+  if (canisterEnvVariables["INTERNET_IDENTITY_CANISTER_ID"]) {
+    internetIdentityUrl = `http://${canisterEnvVariables["INTERNET_IDENTITY_CANISTER_ID"]}.localhost:4943/`;
+  } else {
+    throw new Error("INTERNET_IDENTITY_CANISTER_ID is not set!");
+  }
 } else {
-    internetIdentityUrl = `https://identity.ic0.app`;
+  internetIdentityUrl = `https://identity.ic0.app`;
 }
 
 console.log("URL:" + internetIdentityUrl);
@@ -60,7 +60,12 @@ const frontend_entry = path.join("src", frontendDirectory, "index.html");
 module.exports = {
   target: "web",
   mode: isDevelopment ? "development" : "production",
-  entry: {motoko: './src/Vaulttera_frontend/js/motoko.js', login: './src/Vaulttera_frontend/js/login.js', nav: './src/Vaulttera_frontend/js/navigation.js'},
+  entry: {
+    motoko: './src/Vaulttera_frontend/js/motoko.js',
+    login: './src/Vaulttera_frontend/js/login.js',
+    nav: './src/Vaulttera_frontend/js/navigation.js',
+    profile: './src/Vaulttera_frontend/js/profile.js',
+  },
   output: {
     filename: '[name]bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -71,18 +76,16 @@ module.exports = {
     minimizer: [new TerserPlugin()],
   },
   module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-          },
+    rules: [{
+      test: /\.js$/,
+      exclude: /node_modules/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env'],
         },
       },
-    ],
+    }, ],
   },
   resolve: {
     extensions: [".js", ".ts", ".jsx", ".tsx"],
@@ -113,13 +116,11 @@ module.exports = {
       process: require.resolve("process/browser"),
     }),
     new CopyPlugin({
-      patterns: [
-        {
-          from: `src/${frontendDirectory}/src/.ic-assets.json*`,
-          to: ".ic-assets.json5",
-          noErrorOnMissing: true
-        },
-      ],
+      patterns: [{
+        from: `src/${frontendDirectory}/src/.ic-assets.json*`,
+        to: ".ic-assets.json5",
+        noErrorOnMissing: true
+      }, ],
     }),
     new webpack.DefinePlugin({
       'process.env.CANISTER_ID_VAULTTERA_BACKEND': JSON.stringify(process.env.CANISTER_ID_VAULTTERA_BACKEND),
@@ -142,4 +143,3 @@ module.exports = {
   },
 };
 console.log('Canister ID:', process.env.CANISTER_ID_VAULTTERA_BACKEND);
-
