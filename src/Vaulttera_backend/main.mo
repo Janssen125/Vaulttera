@@ -16,6 +16,7 @@ actor {
   };
 
   type nft = {
+    id : Text;
     name : Text;
     description : Text;
     owner : Principal;
@@ -97,6 +98,7 @@ actor {
     switch (userData.get(caller)) {
       case null {
         userData.put(caller, user);
+        wallet.put(caller, 1000);
         return #ok();
       };
       case (?_registered) {
@@ -184,6 +186,7 @@ actor {
     switch (nftData.get(owner)) {
       case (?_existingNFT) {
         let updatedNFT = {
+          id = newNft.id;
           name = newNft.name;
           description = newNft.description;
           owner = newNft.owner;
