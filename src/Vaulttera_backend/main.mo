@@ -15,10 +15,18 @@ actor {
     password : Text;
   };
 
+  type cat = {
+    #study;
+    #game;
+    #coding;
+    #technology;
+  };
+
   type nft = {
     id : Text;
     name : Text;
     description : Text;
+    category : cat;
     owner : Principal;
     price : Nat;
     image : Text;
@@ -189,6 +197,7 @@ actor {
           id = newNft.id;
           name = newNft.name;
           description = newNft.description;
+          category = newNft.category;
           owner = newNft.owner;
           price = newNft.price;
           image = newNft.image;
