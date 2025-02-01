@@ -72,8 +72,9 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM Content Loaded");
 
     console.log("Initializing IDL Factory");
+});
 
-    async function fetchUserInfo() {
+    export async function fetchUserInfo() {
         try {
             const principal = sessionStorage.getItem("principal");
             if (!principal) {
@@ -103,8 +104,6 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("Error Fetching Data..", error);
         };
     };
-    fetchUserInfo();
-});
 async function createIdentity(identityName, newUser) {
     try {
 

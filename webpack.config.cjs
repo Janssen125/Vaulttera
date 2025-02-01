@@ -60,7 +60,7 @@ const frontend_entry = path.join("src", frontendDirectory, "index.html");
 module.exports = {
   target: "web",
   mode: isDevelopment ? "development" : "production",
-  entry: {motoko: './src/Vaulttera_frontend/js/motoko.js', login: './src/Vaulttera_frontend/js/login.js'},
+  entry: {motoko: './src/Vaulttera_frontend/js/motoko.js', login: './src/Vaulttera_frontend/js/login.js', nav: './src/Vaulttera_frontend/js/navigation.js'},
   output: {
     filename: '[name]bundle.js',
     path: path.resolve(__dirname, 'dist'),
