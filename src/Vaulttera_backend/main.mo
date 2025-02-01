@@ -3,6 +3,9 @@ import Principal "mo:base/Principal";
 import Result "mo:base/Result";
 import Option "mo:base/Option";
 import Array "mo:base/Array";
+import Nat "mo:base/Nat";
+import Text "mo:base/Text";
+import Iter "mo:base/Iter";
 
 actor {
 
@@ -23,7 +26,6 @@ actor {
   };
 
   type nft = {
-    id : Text;
     name : Text;
     description : Text;
     category : cat;
@@ -39,8 +41,9 @@ actor {
 
   let userData = HashMap.HashMap<Principal, userInfo>(0, Principal.equal, Principal.hash);
   let wallet = HashMap.HashMap<Principal, Nat>(0, Principal.equal, Principal.hash);
-
-  // Creating Dummy
+  let nftData = HashMap.HashMap<Text, nft>(0, Text.equal, Text.hash);
+  let nftSlot = HashMap.HashMap<Text, Principal>(0, Text.equal, Text.hash);
+  // Creating Dummy User
 
   let dummyPrincipal = Principal.fromText("6vna6-am6d2-fjuqg-7nfj7-6222p-wkmwn-yglwh-or6bj-tfkmo-bh2yk-yqe");
   let newUser = {
@@ -51,6 +54,74 @@ actor {
   };
   userData.put(dummyPrincipal, newUser);
   wallet.put(dummyPrincipal, 1000);
+
+  let dummyPrincipal1 = Principal.fromText("eqnjc-icmvt-p73ls-f6n3m-rcgjn-fodyc-edxwo-rum2f-rencw-hce23-cae");
+  let newUser1 = {
+    name = "Dummy1";
+    email = "Dummy1@gmail.com";
+    bioStatus = "Dummy1";
+    password = "Dummy1";
+  };
+  userData.put(dummyPrincipal1, newUser1);
+  wallet.put(dummyPrincipal1, 1000);
+
+  // Creating Dummy NFT
+
+  let dummyId = "NFT1";
+  let dummyNFT = {
+    name = "Dummy NFT";
+    description = "Dummy NFT";
+    category = #study;
+    owner = dummyPrincipal;
+    price = 100;
+    image = "assets/img/dummy-1.jpg";
+    slot = 10;
+  };
+  nftData.put(dummyId, dummyNFT);
+
+  let dummyId1 = "NFT2";
+  let dummyNFT1 = {
+    name = "Dummy NFT";
+    description = "Dummy NFT";
+    category = #coding;
+    owner = dummyPrincipal;
+    price = 100;
+    image = "assets/img/dummy-1.jpg";
+    slot = 10;
+  };
+  nftData.put(dummyId1, dummyNFT1);
+
+  let dummyId2 = "NFT3";
+  let dummyNFT2 = {
+    name = "Dummy NFT";
+    description = "Dummy NFT";
+    category = #game;
+    owner = dummyPrincipal;
+    price = 100;
+    image = "assets/img/dummy-1.jpg";
+    slot = 10;
+  };
+  nftData.put(dummyId2, dummyNFT2);
+
+  let dummyId3 = "NFT4";
+  let dummyNFT3 = {
+    name = "Dummy NFT";
+    description = "Dummy NFT";
+    category = #technology;
+    owner = dummyPrincipal;
+    price = 100;
+    image = "assets/img/dummy-1.jpg";
+    slot = 10;
+  };
+  nftData.put(dummyId3, dummyNFT3);
+
+  // Creating Dummy Bought NFT
+
+  nftSlot.put("NFT1", dummyPrincipal1);
+  nftSlot.put("NFT2", dummyPrincipal1);
+  nftSlot.put("NFT3", dummyPrincipal1);
+
+  // Testing Function
 
   public query func getDummyUsername() : async Text {
     switch (userData.get(dummyPrincipal)) {
@@ -168,18 +239,16 @@ actor {
   };
 
   // NFT function
-  //storage for NFTs
-  let nftData = HashMap.HashMap<Principal, nft>(0, Principal.equal, Principal.hash);
 
   //buat nft
-  public func createNFT(owner : Principal, nft : nft) : async Result<(), Text> {
-    nftData.put(owner, nft);
+  public func createNFT(id : Text, nft : nft) : async Result<(), Text> {
+    nftData.put(id, nft);
     return #ok();
   };
 
   //manggil nft
-  public query func getNFT(owner : Principal) : async Result<nft, Text> {
-    switch (nftData.get(owner)) {
+  public query func getNFT(id : Text) : async Result<nft, Text> {
+    switch (nftData.get(id)) {
       case (?nft) {
         return #ok(nft);
       };
@@ -190,11 +259,10 @@ actor {
   };
 
   //update nft
-  public func updateNFT(owner : Principal, newNft : nft) : async Result<(), Text> {
-    switch (nftData.get(owner)) {
+  public func updateNFT(id : Text, newNft : nft) : async Result<(), Text> {
+    switch (nftData.get(id)) {
       case (?_existingNFT) {
         let updatedNFT = {
-          id = newNft.id;
           name = newNft.name;
           description = newNft.description;
           category = newNft.category;
@@ -203,7 +271,7 @@ actor {
           image = newNft.image;
           slot = newNft.slot;
         };
-        nftData.put(owner, updatedNFT);
+        nftData.put(id, updatedNFT);
         return #ok();
       };
       case null {
@@ -213,8 +281,8 @@ actor {
   };
 
   //hapus nft
-  public func deleteNFT(owner : Principal) : async Result<(), Text> {
-    switch (nftData.remove(owner)) {
+  public func deleteNFT(id : Text) : async Result<(), Text> {
+    switch (nftData.remove(id)) {
       case (?_removedNFT) {
         return #ok();
       };
@@ -225,12 +293,21 @@ actor {
   };
 
   //manggil semua nft
-  public query func getAllNFT() : async [nft] {
-    var result : [nft] = [];
-    for ((_, nft) in nftData.entries()) {
-      result := Array.append(result, [nft]);
+  public query func getAllNFT() : async [(Text, nft)] {
+    var result : [(Text, nft)] = [];
+    for ((id, nft) in nftData.entries()) {
+      result := Array.append(result, [(id, nft)]);
     };
     return result;
   };
 
+  public query func getAllBoughtNFT(idNft : Text) : async Nat {
+    var result : Nat = 0;
+    for ((id, nft) in nftSlot.entries()) {
+      if (id == idNft) {
+        result += 1;
+      };
+    };
+    return result;
+  };
 };

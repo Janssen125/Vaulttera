@@ -24,6 +24,22 @@ const idlFactory = ({
         err: IDL.Text,
     });
 
+    const nftType = IDL.Record({
+        owner: IDL.Principal,
+        name: IDL.Text,
+        slot: IDL.Nat,
+        description: IDL.Text,
+        category: IDL.Variant({
+            game: IDL.Null,
+            technology: IDL.Null,
+            study: IDL.Null,
+            coding: IDL.Null
+        }),
+        image: IDL.Text,
+        price: IDL.Nat
+    });
+    
+
     return IDL.Service({
         getUserInfo: IDL.Func(
             [IDL.Principal],
@@ -53,6 +69,8 @@ const idlFactory = ({
             []
         ),
         updateUser: IDL.Func([IDL.Principal, userInfo], [Result], []),
+        getAllNFT: IDL.Func([], [IDL.Vec(IDL.Tuple(IDL.Text, nftType))], 'query'),
+        getAllBoughtNFT: IDL.Func([IDL.Text], [IDL.Nat], ["query"]),
     });
 };
 
@@ -259,4 +277,19 @@ export async function editPass(p, cpass, pass) {
         return false;
     };
 
+};
+
+export async function showAllNFT() {
+    const nfts = await actor.getAllNFT();
+    return nfts;
+};
+
+export async function getUserInfo(p) {
+    const user = await actor.getUserInfo(p);
+    return user;
+}
+
+export async function getAllBoughtNFT(id) {
+    const boughtNFT = await actor.getAllBoughtNFT(id);
+    return boughtNFT;
 }
