@@ -11,7 +11,6 @@ app.post("/create-identity", (req, res) => {
         const identityName = req.body.identityName;
         console.log("Creating identity:", identityName);
 
-        // Ensure we create without encryption (avoiding password prompt)
         execSync(`dfx identity new ${identityName} --disable-encryption`);
         execSync(`dfx identity use ${identityName}`);
         

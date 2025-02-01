@@ -23,9 +23,10 @@ Running Guide
 3. Run "dfx start", do "dfx start --background" if you want to start it in the background
 4. Open new wsl Terminal
 5. Run "dfx deploy", do "dfx deploy <canister>" to specify the canister
-6. Run ngrok in cmd, type "ngrok http <your_local_web_server>" example: "ngrok http 127.0.0.1:5500" or "ngrok http 80" (for localhost)
-7. Open wsl at "Vaulttera/src/Vaulttera_frontend/js"
-8. Type "node server.js"
+6. Type "npm install express"
+7. Run ngrok in cmd, type "ngrok http <your_local_web_server>" example: "ngrok http 127.0.0.1:5500" or "ngrok http 80" (for localhost)
+8. Open new wsl at "Vaulttera/src/Vaulttera_frontend/js"
+9. Type "node server.js"
 
 Use Google Sign In Guide
 
