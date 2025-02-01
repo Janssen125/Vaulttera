@@ -21,6 +21,7 @@ actor {
     owner : Principal;
     price : Nat;
     image : Text;
+    slot : Nat;
   };
 
   type Result<A, B> = Result.Result<A, B>;
@@ -154,6 +155,70 @@ actor {
         return 0;
       };
     };
-  }
+  };
+
+  // NFT function
+  //storage for NFTs
+  let nftData = HashMap.HashMap<Principal, nft>(0, Principal.equal, Principal.hash);
+
+  //buat nft
+  public func createNFT(owner : Principal, nft : nft) : async Result<(), Text> {
+    nftData.put(owner, nft);
+    return #ok();
+  };
+
+  //manggil nft
+  public query func getNFT(owner : Principal) : async Result<nft, Text> {
+    switch (nftData.get(owner)) {
+      case (?nft) {
+        return #ok(nft);
+      };
+      case null {
+        return #err("NFT not found");
+      };
+    };
+  };
+
+  //update nft
+  public func updateNFT(owner : Principal, newNft : nft) : async Result<(), Text> {
+    switch (nftData.get(owner)) {
+      case (?_existingNFT) {
+        let updatedNFT = {
+          name = newNft.name;
+          description = newNft.description;
+          owner = newNft.owner;
+          price = newNft.price;
+          image = newNft.image;
+          slot = newNft.slot;
+        };
+        nftData.put(owner, updatedNFT);
+        return #ok();
+      };
+      case null {
+        return #err("NFT not found");
+      };
+    };
+  };
+
+  //hapus nft
+  public func deleteNFT(owner : Principal) : async Result<(), Text> {
+    switch (nftData.remove(owner)) {
+      case (?_removedNFT) {
+        return #ok();
+      };
+      case null {
+        return #err("NFT not found");
+      };
+    };
+  };
+
+  //manggil semua nft
+  public query func getAllNFT() : async [nft] {
+    var result : [nft] = [];
+    for ((_, nft) in nftData.entries()) {
+      result := Array.append(result, [nft]);
+    };
+    return result;
+  };
 
 };
