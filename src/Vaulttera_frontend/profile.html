@@ -69,47 +69,46 @@
                             </div>
                             <hr class="border-dark my-2">
 
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <label class="form-label">Username</label>
-                                        <input type="text" class="form-control mb-2" placeholder="username"
-                                            id="usernameIn" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Email</label>
-                                        <input type="email" class="form-control mb-2" placeholder="email@gmail.com"
-                                            id="email" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Bio</label>
-                                        <input type="text" class="form-control mb-2" placeholder="Bio" id="bio"
-                                            required>
-                                    </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label class="form-label">Username</label>
+                                    <input type="text" class="form-control mb-2" placeholder="username" id="usernameIn"
+                                        required>
                                 </div>
-                                <div class="text-right mt-3">
-                                    <button type="button" class="btn btn-save-profile" id="changeProfile">Save changes</button>&nbsp;
-                                    <button type="reset" class="btn-reset">Cancel</button>
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control mb-2" placeholder="email@gmail.com"
+                                        id="email" required>
                                 </div>
-
+                                <div class="form-group">
+                                    <label class="form-label">Bio</label>
+                                    <input type="text" class="form-control mb-2" placeholder="Bio" id="bio" required>
+                                </div>
+                            </div>
+                            <div class="text-right mt-3">
+                                <button type="button" class="btn btn-save-profile" id="changeProfile">Save
+                                    changes</button>&nbsp;
+                                <button type="reset" class="btn-reset">Cancel</button>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="account-change-password">
                             <div class="card-body pb-2">
                                 <div class="form-group">
                                     <label class="form-label">Current password</label>
-                                    <input type="password" class="form-control">
+                                    <input type="password" class="form-control" id="curPass">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">New password</label>
-                                    <input type="password" class="form-control">
+                                    <input type="password" class="form-control" id="newPass">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Repeat new password</label>
-                                    <input type="password" class="form-control">
+                                    <input type="password" class="form-control" id="newPass2">
                                 </div>
                             </div>
                             <div class="text-right mt-3">
-                                <button type="button" class="btn btn-save-profile">Save changes</button>&nbsp;
-                                <button type="button" class="btn-reset">Cancel</button>
+                                <button type="button" class="btn btn-save-profile" id="changePassBtn">Save changes</button>&nbsp;
+                                <button type="reset" class="btn-reset">Cancel</button>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="account-info">
