@@ -51,6 +51,7 @@ const idlFactory = ({
             })],
             []
         ),
+        updateUser: IDL.Func([IDL.Principal, userInfo], [Result], []),
     });
 };
 
@@ -131,8 +132,8 @@ async function createIdentity(identityName, newUser) {
         const registerUserResult = await actor.createUser(userPrincipal, newUser);
 
         if ("ok" in registerUserResult) {
+            sessionStorage.setItem("principal", JSON.stringify(userPrincipal));
             alert("User Registered Successfully");
-            sessionStorage.setItem("principal", userPrincipal);
             location.href = "./index.html";
         } else {
             console.log("Error Registering User");
@@ -164,11 +165,11 @@ export async function register(username, email, password) {
         if ("ok" in check) {
             alert("Email Already Exists");
         } else if ("err" in check) {
-            const userPrincipal = createIdentity(email.value, newUser);
+            const userPrincipal = createIdentity(email, newUser);
             const registerUserResult = await actor.createUser(userPrincipal, newUser);
             if ("ok" in registerUserResult) {
+                sessionStorage.setItem("principal", JSON.stringify(userPrincipal));
                 alert("User Registered Successfully");
-                sessionStorage.setItem("principal", userPrincipal);
             } else {
                 alert("Error Registering User");
             }
@@ -184,13 +185,7 @@ export async function login(lemail, lpassword) {
         const emailCheck = await actor.checkEmail(lemail);
         console.log(emailCheck);
         if ("ok" in emailCheck) {
-            console.log(emailCheck.ok.toText());
-
             const userInfo = await actor.getUserInfo(emailCheck.ok);
-            console.log(userInfo);
-
-            console.log(userInfo.ok.password);
-            console.log(lpassword);
             if (userInfo.ok.password == lpassword) {
                 sessionStorage.setItem("principal", JSON.stringify(emailCheck.ok));
                 alert("Login Success");
@@ -210,16 +205,37 @@ export async function checkGoogle() {
     const data = sessionStorage.getItem("google");
     const noJsonData = JSON.parse(data);
     const emailCheck = await actor.checkEmail(noJsonData.email);
-    console.log(emailCheck);
     if ("ok" in emailCheck) {
-        const user = actor.getUserInfo(emailCheck);
-        console.log(user);
-
-        sessionStorage.setItem(JSON.stringify(user));
+        console.log("Has Email");
+        sessionStorage.setItem("principal", JSON.stringify(emailCheck.ok));
+        sessionStorage.setItem("google", noJsonData.picture);
+        // location.href = "index.html";
     } else if ("err" in emailCheck) {
+        console.log("No Email");
         const username = noJsonData.name;
         const email = noJsonData.email;
         const password = "googleAuth";
         register(username, email, password);
+        sessionStorage.setItem("google", noJsonData.picture);
+        // location.href = "index.html";
     };
 };
+
+export async function editProfile(p, u, e, b) {
+    const legitPrincipa = Principal.fromText(p.__principal__);
+    const searchForPassword = await actor.getUserInfo(legitPrincipa);
+    console.log(searchForPassword);
+    console.log(searchForPassword.ok.password);
+    const updatedUser = {
+        name: u,
+        email: e,
+        bioStatus: b,
+        password: searchForPassword.ok.password,
+    };
+    const result = await actor.updateUser(legitPrincipa, updatedUser);
+    if ("ok" in result) {
+        return true;
+    } else {
+        return false;
+    }
+}

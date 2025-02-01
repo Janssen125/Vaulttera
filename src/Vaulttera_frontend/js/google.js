@@ -23,6 +23,7 @@ function handleCredentialResponse(response) {
   googleUser = data;
   
   sessionStorage.setItem("google", JSON.stringify(newUser));
+  location.href = "login.html";
 }
 
 // Sign-out function

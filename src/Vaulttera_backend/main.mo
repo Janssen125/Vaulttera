@@ -3,9 +3,7 @@ import Principal "mo:base/Principal";
 import Result "mo:base/Result";
 import Option "mo:base/Option";
 import Array "mo:base/Array";
-import Nat8 "mo:base/Nat8";
-import Random "mo:base/Random";
-import Blob "mo:base/Blob";
+
 actor {
 
   // Types
@@ -55,6 +53,23 @@ actor {
     return Principal.fromText(text);
   };
 
+  public func showAllPrincipal() : async [Text] {
+    var result : [Text] = [];
+    for ((principal, user) in userData.entries()) {
+      result := Array.append(
+        result,
+        [
+          "Principal: " # Principal.toText(principal),
+          "Name: " # user.name,
+          "Email: " # user.email,
+          "Bio Status: " # user.bioStatus,
+          "Password: " # user.password,
+        ],
+      );
+    };
+    return result;
+  };
+
   // User
 
   public query func getUserInfo(p : Principal) : async Result<userInfo, Text> {
@@ -87,6 +102,17 @@ actor {
         return #err("User Registered");
       };
     };
+  };
+
+  public func updateUser(caller : Principal, user : userInfo) : async Result<(), Text> {
+    let updatedUser = {
+      name = user.name;
+      email = user.email;
+      bioStatus = user.bioStatus;
+      password = user.password;
+    };
+    userData.put(caller, updatedUser);
+    return #ok();
   };
 
   // Wallet
