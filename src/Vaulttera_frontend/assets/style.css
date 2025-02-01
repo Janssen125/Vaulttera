@@ -1815,3 +1815,18 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
   max-height: 400px;
   border-radius: 10px;
 }
+
+.btn-logout {
+  background-color: var(--muda);
+  color: var(--text);
+  transition: .3s;
+  border-radius: 10px;
+  border: none;
+  padding: 7px 15px 7px 15px;
+}
+
+.btn-logout:hover{
+  background-color: var(--tua);
+  transition: .3s;
+  color: var(--text);
+}
