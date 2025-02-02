@@ -76,6 +76,7 @@ const idlFactory = ({
         checkOwnership: IDL.Func([IDL.Principal, IDL.Text], [IDL.Bool], 'query'),
         getRevenue: IDL.Func([IDL.Principal], [IDL.Nat], 'query'),
         deleteNFT: IDL.Func([IDL.Text], [Result]),
+        createNFT: IDL.Func([IDL.Text, nftType], [Result], []),
     });
 };
 
@@ -316,4 +317,9 @@ export async function getRevenue(p) {
 export async function deleteNFT(id) {
     const delNft = await actor.deleteNFT(id);
     return delNft;
+}
+
+export async function createNFT(id, nft) {
+    const creNft = await actor.createNFT(id, nft);
+    return creNft;
 }

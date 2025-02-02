@@ -328,7 +328,7 @@ actor {
   public query func getAllBoughtNFT(idNft : Text) : async Nat {
     var result : Nat = 0;
     for ((id, nft) in nftSlot.entries()) {
-      if (id == idNft) {
+      if (nft.nft == idNft) {
         result += 1;
       };
     };
