@@ -68,6 +68,7 @@ module.exports = {
     nft: './src/Vaulttera_frontend/js/nft.js',
     nftLanding: './src/Vaulttera_frontend/js/nftLanding.js',
     nftDetail: './src/Vaulttera_frontend/js/nftDetail.js',
+    revenue: './src/Vaulttera_frontend/js/revenue.js',
   },
   output: {
     filename: '[name]bundle.js',

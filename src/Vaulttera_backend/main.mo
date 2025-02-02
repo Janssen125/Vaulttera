@@ -339,15 +339,12 @@ actor {
     var result : [(Text, nft)] = [];
 
     for ((id, owner) in nftSlot.entries()) {
-      // Iterate over nftSlot (ID -> Owner)
       if (owner.owner == p) {
-        // Check if the given Principal matches the owner
-        switch (nftData.get(id)) {
-          // Get the NFT from nftData
+        switch (nftData.get(owner.nft)) {
           case (?nft) {
             result := Array.append(result, [(id, nft)]);
           };
-          case null {}; // NFT does not exist in nftData
+          case null {};
         };
       };
     };
