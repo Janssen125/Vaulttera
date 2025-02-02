@@ -3,7 +3,7 @@
 Coba buat projek web3 buat hackaton
 
 - [x] Login Page, Register Page, Change Password
-- [ ] Landing Page
+- [x] Landing Page
 - [x] NFT List
 - [ ] NFT Detail
 - [ ] Profile
