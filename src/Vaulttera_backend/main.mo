@@ -5,7 +5,6 @@ import Option "mo:base/Option";
 import Array "mo:base/Array";
 import Nat "mo:base/Nat";
 import Text "mo:base/Text";
-import Iter "mo:base/Iter";
 
 actor {
 
@@ -310,4 +309,24 @@ actor {
     };
     return result;
   };
+
+  public query func getAllUserBought(p : Principal) : async [(Text, nft)] {
+    var result : [(Text, nft)] = [];
+
+    for ((id, owner) in nftSlot.entries()) {
+      // Iterate over nftSlot (ID -> Owner)
+      if (owner == p) {
+        // Check if the given Principal matches the owner
+        switch (nftData.get(id)) {
+          // Get the NFT from nftData
+          case (?nft) {
+            result := Array.append(result, [(id, nft)]);
+          };
+          case null {}; // NFT does not exist in nftData
+        };
+      };
+    };
+    return result;
+  };
+
 };

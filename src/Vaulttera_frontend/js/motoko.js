@@ -71,6 +71,7 @@ const idlFactory = ({
         updateUser: IDL.Func([IDL.Principal, userInfo], [Result], []),
         getAllNFT: IDL.Func([], [IDL.Vec(IDL.Tuple(IDL.Text, nftType))], 'query'),
         getAllBoughtNFT: IDL.Func([IDL.Text], [IDL.Nat], ["query"]),
+        getAllUserBought: IDL.Func([IDL.Principal], [IDL.Vec(IDL.Tuple(IDL.Text, nftType))], 'query'),
     });
 };
 
@@ -94,11 +95,8 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Initializing IDL Factory");
 });
 
-export async function getBalance() {
-    const balance = await actor.getBalance({
-        principal: actor.getPrincipal()
-    });
-    console.log(balance);
+export async function getBalance(p) {
+    const balance = await actor.getBalance(p);
     return balance;
 };
 
@@ -292,4 +290,9 @@ export async function getUserInfo(p) {
 export async function getAllBoughtNFT(id) {
     const boughtNFT = await actor.getAllBoughtNFT(id);
     return boughtNFT;
+}
+
+export async function getAllUserBought(p) {
+    const userBought = await actor.getAllUserBought(p);
+    return userBought;
 }

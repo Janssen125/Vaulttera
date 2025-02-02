@@ -9,7 +9,7 @@ Coba buat projek web3 buat hackaton
 - [ ] Profile
 - [ ] Revenue
 - [ ] NFT Buy/Sell
-- [ ] Wallet
+- [x] Wallet
 
 <h1>Requirement</h1>
 Node.js (https://nodejs.org/en/download)<br>
