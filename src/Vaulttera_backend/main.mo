@@ -32,6 +32,12 @@ actor {
     price : Nat;
     image : Text;
     slot : Nat;
+    benefit : Text;
+  };
+
+  type ownership = {
+    owner : Principal;
+    nft : Text;
   };
 
   type Result<A, B> = Result.Result<A, B>;
@@ -41,7 +47,7 @@ actor {
   let userData = HashMap.HashMap<Principal, userInfo>(0, Principal.equal, Principal.hash);
   let wallet = HashMap.HashMap<Principal, Nat>(0, Principal.equal, Principal.hash);
   let nftData = HashMap.HashMap<Text, nft>(0, Text.equal, Text.hash);
-  let nftSlot = HashMap.HashMap<Text, Principal>(0, Text.equal, Text.hash);
+  let nftSlot = HashMap.HashMap<Text, ownership>(0, Text.equal, Text.hash);
   // Creating Dummy User
 
   let dummyPrincipal = Principal.fromText("6vna6-am6d2-fjuqg-7nfj7-6222p-wkmwn-yglwh-or6bj-tfkmo-bh2yk-yqe");
@@ -75,6 +81,7 @@ actor {
     price = 100;
     image = "assets/img/dummy-1.jpg";
     slot = 10;
+    benefit = "Thank you for buying the NFT, here are some of the links for the tutorial: https://google.com";
   };
   nftData.put(dummyId, dummyNFT);
 
@@ -87,6 +94,7 @@ actor {
     price = 100;
     image = "assets/img/dummy-1.jpg";
     slot = 10;
+    benefit = "Thank you for buying the NFT, here are some of the links for the tutorial: https://google.com";
   };
   nftData.put(dummyId1, dummyNFT1);
 
@@ -99,6 +107,7 @@ actor {
     price = 100;
     image = "assets/img/dummy-1.jpg";
     slot = 10;
+    benefit = "Thank you for buying the NFT, here are some of the links for the tutorial: https://google.com";
   };
   nftData.put(dummyId2, dummyNFT2);
 
@@ -111,14 +120,29 @@ actor {
     price = 100;
     image = "assets/img/dummy-1.jpg";
     slot = 10;
+    benefit = "Thank you for buying the NFT, here are some of the links for the tutorial: https://google.com";
   };
   nftData.put(dummyId3, dummyNFT3);
 
   // Creating Dummy Bought NFT
 
-  nftSlot.put("NFT1", dummyPrincipal1);
-  nftSlot.put("NFT2", dummyPrincipal1);
-  nftSlot.put("NFT3", dummyPrincipal1);
+  let dummyOwnership = {
+    owner = dummyPrincipal1;
+    nft = dummyId;
+  };
+  nftSlot.put("OW1", dummyOwnership);
+
+  let dummyOwnership1 = {
+    owner = dummyPrincipal1;
+    nft = dummyId1;
+  };
+  nftSlot.put("OW2", dummyOwnership1);
+
+  let dummyOwnership2 = {
+    owner = dummyPrincipal1;
+    nft = dummyId2;
+  };
+  nftSlot.put("OW3", dummyOwnership2);
 
   // Testing Function
 
@@ -214,7 +238,7 @@ actor {
     };
   };
 
-  public shared ({ caller }) func transfer(from : Principal, to : Principal, amount : Nat) : async Result<(), Text> {
+  public func transfer(from : Principal, to : Principal, amount : Nat) : async Result<(), Text> {
     let fromBalance = Option.get(wallet.get(from), 0);
     if (fromBalance < amount) {
       return #err("Not Enough Money");
@@ -269,6 +293,7 @@ actor {
           price = newNft.price;
           image = newNft.image;
           slot = newNft.slot;
+          benefit = newNft.benefit;
         };
         nftData.put(id, updatedNFT);
         return #ok();
@@ -315,7 +340,7 @@ actor {
 
     for ((id, owner) in nftSlot.entries()) {
       // Iterate over nftSlot (ID -> Owner)
-      if (owner == p) {
+      if (owner.owner == p) {
         // Check if the given Principal matches the owner
         switch (nftData.get(id)) {
           // Get the NFT from nftData
@@ -324,6 +349,17 @@ actor {
           };
           case null {}; // NFT does not exist in nftData
         };
+      };
+    };
+    return result;
+  };
+
+  public query func checkOwnership(theOwner : Principal, nftId : Text) : async Bool {
+    var result : Bool = false;
+    for ((id, owner) in nftSlot.entries()) {
+      if (owner.nft == nftId and owner.owner == theOwner) {
+        result := true;
+        return result;
       };
     };
     return result;

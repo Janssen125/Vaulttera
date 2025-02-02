@@ -2,8 +2,7 @@ import {
     showAllNFT,
 } from "./motoko.js";
 document.addEventListener("DOMContentLoaded", async function () {
-    const result = await showAllNFT(); // Now returns [(id, nft)]
-    console.log("Debug result:", result);
+    const result = await showAllNFT();
     document.getElementById("ptop1").src = result[0][1].image;
     document.getElementById("ptop11").src = result[0][1].image;
     document.getElementById("ptop2").src = result[1][1].image;

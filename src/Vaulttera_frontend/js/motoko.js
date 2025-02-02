@@ -36,7 +36,8 @@ const idlFactory = ({
             coding: IDL.Null
         }),
         image: IDL.Text,
-        price: IDL.Nat
+        price: IDL.Nat,
+        benefit: IDL.Text,
     });
     
 
@@ -72,6 +73,7 @@ const idlFactory = ({
         getAllNFT: IDL.Func([], [IDL.Vec(IDL.Tuple(IDL.Text, nftType))], 'query'),
         getAllBoughtNFT: IDL.Func([IDL.Text], [IDL.Nat], ["query"]),
         getAllUserBought: IDL.Func([IDL.Principal], [IDL.Vec(IDL.Tuple(IDL.Text, nftType))], 'query'),
+        checkOwnership: IDL.Func([IDL.Principal, IDL.Text], [IDL.Bool], 'query'),
     });
 };
 
@@ -295,4 +297,9 @@ export async function getAllBoughtNFT(id) {
 export async function getAllUserBought(p) {
     const userBought = await actor.getAllUserBought(p);
     return userBought;
+}
+
+export async function checkOwnership(p, id) {
+    const ownership = await actor.checkOwnership(p, id);
+    return ownership;
 }

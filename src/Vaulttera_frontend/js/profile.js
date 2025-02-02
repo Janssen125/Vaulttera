@@ -72,7 +72,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     const userBalance = await getBalance(principal);
     document.getElementById("balance").innerHTML = userBalance;
     const totalBought = await getAllUserBought(principal);
-    console.log(totalBought);
 
     document.getElementById("totalNft").innerHTML = totalBought.length;
 

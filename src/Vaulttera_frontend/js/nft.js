@@ -4,17 +4,13 @@ import {
     getAllBoughtNFT
 } from "./motoko.js";
 document.addEventListener("DOMContentLoaded", async function () {
-    const result = await showAllNFT(); // Now returns [(id, nft)]
-    console.log("Debug result:", result);
+    const result = await showAllNFT();
     
     let items = ``;
 
-    // Process all NFTs first
     for (let [i, [id, nft]] of result.entries()) {
-        const user = await userInfo(nft.owner); // Wait for userInfo to resolve
+        const user = await userInfo(nft.owner); 
         const bought = await getAllBoughtNFT(id);
-        console.log(bought);
-        console.log(id);
         
         const total = bought;
         const category = Object.keys(nft.category)[0] || "Unknown";
