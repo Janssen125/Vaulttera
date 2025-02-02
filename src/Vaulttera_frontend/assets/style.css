@@ -306,7 +306,7 @@ section {
 
 .profile-card:hover {
   border-radius: 10px;
-  height: 280px;
+  height: 300px;
 }
 
 .profile-card .img {
@@ -323,18 +323,20 @@ section {
 
 .profile-card .img img {
   width: 100%;
+  max-height: 100%;
   border-radius: 50%;
   box-shadow: 0 0 22px #3336;
   transition: .6s;
 }
 
 .profile-card:hover img {
+  max-height: 160px;
   border-radius: 10px;
 }
 
 .caption {
   text-align: center;
-  transform: translateY(-100px);
+  transform: translateY(-120px);
   opacity: 0;
   transition: .6s;
 }
@@ -1350,6 +1352,7 @@ footer {
 
 .flex1-detail {
   display: flex;
+  margin-top: -20px;
 }
 
 .main_image-detail img{
@@ -1441,7 +1444,7 @@ footer {
   outline: none;
   background: #4E3B31;
   color: var(--text);
-  margin-top: 5%;
+  margin-top: 2%;
   border-radius: 30px;
   transition: .3s;
 }
@@ -1657,14 +1660,21 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
 
 .profile-nft-card {
   width: 250px;
-  height: 250px;
+  min-height: 250px;
   margin-bottom: 50px;
+  padding-bottom: 30px;
 }
 
 .profile-nft-card img {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   border-radius: 10px;
+}
+
+.profile-nft-card a {
+  margin-top: 10px;
+  display: flex;
+  width: 90px;
 }
 
 @media screen and (max-width: 1200px) {
@@ -1823,6 +1833,7 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
   border-radius: 10px;
   border: none;
   padding: 7px 15px 7px 15px;
+  text-decoration: none;
 }
 
 .btn-logout:hover{

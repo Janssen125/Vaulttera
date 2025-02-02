@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                                         <img src="${nft.image}" alt="">
                                         <h4>Name: ${nft.name}</h4>
                                         <h6>Category: ${category}</h6>
-                                        <a href="nftdetail.html?id=${id}" class="btn">Details</a>
+                                        <a href="nftdetail.html?id=${id}" class="btn-logout">Details</a>
                                     </div>`;
     }
     const element = document.getElementById("veryUniqueItems");

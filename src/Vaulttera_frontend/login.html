@@ -30,13 +30,13 @@
                 </div>
                 <ul class="navbar-nav mb-2 mx-3 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/">Home</a>
+                    <a class="nav-link" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-active" id="products" href="nft.html">NFT List</a>
+                    <a class="nav-link" id="products" href="./nft.html">NFT List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="about-us" href="revenue.html">Revenue</a>
+                    <a class="nav-link" id="about-us" href="./revenue.html">Revenue</a>
                     </li>
                     <li class="nav-item" id="login">
                     </li>
@@ -143,14 +143,23 @@
     const container = document.querySelector('.form-container');
     const registerBtn = document.querySelector('.register-btn');
     const loginBtn = document.querySelector('.login-btn');
-
+    
     registerBtn.addEventListener('click', () => {
         container.classList.add('active');
     });
-
+    
     loginBtn.addEventListener('click', () => {
         container.classList.remove('active');
     });
+    
+    document.addEventListener("DOMContentLoaded", () => {
+        const loginNav = document.querySelector('.nav-login');
+
+        if (loginNav) {
+        loginNav.classList.add('nav-active');
+    }
+});
+
 </script>
 
 </html>
