@@ -329,3 +329,8 @@ export async function updateNFT(id, nft) {
     const updtNft = await actor.updateNFT(id, nft);
     return updtNft;
 }
+
+export async function buyNFT(p, id) {
+    const buyNft = await actor.buyNFT(p, id);
+    return buyNft;
+}
