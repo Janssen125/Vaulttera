@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 document.getElementById('slot').innerHTML = `NFT is sold`;
             }
             else{
-                document.getElementById("slot").innerHTML = bought + "/" + nft.slot;
+                document.getElementById("slot").innerHTML = nft.slot - bought;
             }
             return;
         }
