@@ -1,17 +1,50 @@
-import {  getUserInfo, createNFT } from "./motoko.js";
+import {
+    showAllNFT,
+    getUserInfo,
+    updateNFT
+} from "./motoko.js";
 import {
     Principal
 } from '@dfinity/principal';
 document.addEventListener("DOMContentLoaded", async function () {
-    const principal = Principal.fromText(JSON.parse(sessionStorage.getItem("principal")).__principal__);
-    const user = await getUserInfo(principal);
-    document.getElementById("Author").value = user.ok.name;
-});
+    const urlParams = new URLSearchParams(window.location.search);
+    const nftId = urlParams.get('id');
+    const result = await showAllNFT(nftId);
+    for (let [i, [id, nft]] of result.entries()) {
+        if (id == nftId) {
+            const userOwner = await getUserInfo(nft.owner);
+            document.getElementById("title").innerHTML = "EDIT " + nft.name;
+            document.getElementById("id").value = id;
+            document.getElementById("nftname").value = nft.name;
+            document.getElementById("Author").value = userOwner.ok.name;
+            document.getElementById("description").value = nft.description;
+            document.getElementById("category").value = nft.category;
+            document.getElementById("price").value = nft.price;
+            document.getElementById("slot").value = nft.slot;
+            document.getElementById("benefit").value = nft.benefit;
+            // Assuming `nft.image` contains the saved image path (e.g., "assets/img/your-nft.jpg")
+            document.getElementById("newImg").src = nft.image || "assets/img/no-img.png";
 
+            // Update image preview when a new file is selected
+            document.getElementById("image").addEventListener("change", function (event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        document.getElementById("newImg").src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            return;
+        }
+    };
+});
 document.getElementById("theform").addEventListener("submit", async function (event) {
     event.preventDefault(); // Prevent default form submission
 
     // Get form values
+    const id = document.getElementById("id").value;
     const nftName = document.getElementById("nftname").value;
     const description = document.getElementById("description").value;
     const category = { [document.getElementById("category").value]: null };
@@ -21,19 +54,26 @@ document.getElementById("theform").addEventListener("submit", async function (ev
     const imageFile = document.getElementById("image").files[0]; // Get file
 
     // Check if all fields are filled out
-    if (!nftName || !description || !category || !price || !slot || !benefit || !imageFile) {
+    if (!nftName || !description || !category || !price || !slot || !benefit) {
         alert("Please fill all fields and upload an image.");
         return;
     }
 
-    // Upload the image first and get the file path
-    const imagePath = await uploadImage(imageFile);
+    let imagePath;
+    if(imageFile){
 
-    if (!imagePath) {
-        alert("Failed to upload image.");
-        return;
+        // Upload the image first and get the file path
+         imagePath = await uploadImage(imageFile);
+        
+        if (!imagePath) {
+            console.log("Failed to upload image.");
+            return;
+        }
     }
-
+    else{
+        imagePath = document.getElementById("newImg").src;
+    }
+        
     // Prepare NFT data with the file path
     const nftData = {
         name: nftName,
@@ -43,21 +83,20 @@ document.getElementById("theform").addEventListener("submit", async function (ev
         price: Number(price),
         slot: Number(slot),
         benefit: benefit,
-        image: imagePath, // The path to the uploaded image
+        image: imagePath,
     };
 
     // Send NFT data to your Motoko backend
     try {
-        const randomID = generateRandomID(8); // Generate random ID
         
-        const result = await createNFT(randomID, nftData); 
+        const result = await updateNFT(id, nftData); 
         
         if ("ok" in result) {
-            alert("NFT created successfully!");
+            alert("NFT updated successfully!");
             document.getElementById("theform").reset();
             document.getElementById("newImg").src = "assets/img/no-img.png"; // Reset preview image
         } else {
-            alert("Error: " + result.message);
+            console.log("Error: " + result.message);
         }
         location.href = "revenue.html";
     } catch (error) {
@@ -65,7 +104,6 @@ document.getElementById("theform").addEventListener("submit", async function (ev
         alert("Failed to create NFT.");
     }
 });
-
 // Function to upload image to the server
 async function uploadImage(file) {
     const formData = new FormData();
@@ -102,14 +140,3 @@ document.getElementById("image").addEventListener("change", function (event) {
         reader.readAsDataURL(file);
     }
 });
-
-// Utility function to generate a random ID
-function generateRandomID(length) {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = '';
-    const charactersLength = characters.length;
-    for (let i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-}

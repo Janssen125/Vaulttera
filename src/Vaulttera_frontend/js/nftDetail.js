@@ -4,9 +4,9 @@ import {
 } from '@dfinity/principal';
 document.addEventListener("DOMContentLoaded", async function () {
     const urlParams = new URLSearchParams(window.location.search);
+    const nftId = urlParams.get('id');
     const principal = Principal.fromText(JSON.parse(sessionStorage.getItem("principal")).__principal__);
     const currUser = await getUserInfo(principal);
-    const nftId = urlParams.get('id');
     const result = await showAllNFT(nftId);
     for (let [i,[id, nft]] of result.entries()) {
         const user = await getUserInfo(nft.owner);
