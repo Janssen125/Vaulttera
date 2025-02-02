@@ -2,10 +2,36 @@ import {
     getUserInfo,
     getAllBoughtNFT,
     showAllNFT,
+    getRevenue,
+    deleteNFT,
 } from "./motoko.js";
 import {
     Principal
 } from '@dfinity/principal';
+
+async function confirmDelete(event, element) {
+    event.preventDefault();
+
+    let id = element.getAttribute("data-id");
+    let confirmation = confirm(`Are you sure you want to delete item with ID: ${id}?`);
+
+    if (confirmation) {
+        const delRes = await deleteNFT(id);
+        if("ok" in delRes) {
+            alert("NFT Deleted");
+            location.reload();
+        }
+        else if("err" in delRes){
+            alert("Fail to delete NFT");
+        }
+        else{
+            alert("NFT not avaliable");
+        }
+    } else {
+        alert("Deletion canceled.");
+    }
+}
+
 document.addEventListener("DOMContentLoaded", async function () {
     const principal = Principal.fromText(JSON.parse(sessionStorage.getItem("principal")).__principal__);
     const user = await getUserInfo(principal);
@@ -15,9 +41,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     } else if ("ok" in user) {
 
         const result = await showAllNFT();
-
+        const revenue = await getRevenue(principal);
         let items = `<div class="create-nft-button">
                     <a href="./createnft.html" class="btn">CREATE NFT</a>
+                    Total Revenue: ${revenue}
                 </div>`;
         let norev = true;
 
@@ -26,7 +53,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             const bought = await getAllBoughtNFT(id);
 
             const category = Object.keys(nft.category)[0] || "Unknown";
-            
+
             if (user.ok.email == userOwner.ok.email) {
                 norev = false;
                 items += `                <div class="col-md-3">
@@ -42,22 +69,30 @@ document.addEventListener("DOMContentLoaded", async function () {
                 <br>
                 Slot<small> ${bought}/${nft.slot}</small>
                 </p>
-                <a href="" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
-                <a href="" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
-                <a href="" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                <a href="nftdetail.html?id=${id}" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
+                <a href="editnft.html?id=${id}" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
+                <a href="#" class="btn btn-danger delete-btn" data-id="${id}"><i class="fa-solid fa-trash"></i></a>
                 </div>
                 </div>
                 </div>`;
             }
         };
         if (!norev) {
-        const element = document.getElementById("veryUniqueItems");
-        if (element) {
-            element.innerHTML = items; // Set the items once the loop finishes
-        }
+            const element = document.getElementById("veryUniqueItems");
+            if (element) {
+                element.innerHTML = items;
+
+                document.querySelectorAll(".delete-btn").forEach(btn => {
+                    btn.addEventListener("click", function (event) {
+                        confirmDelete(event, this);
+                    });
+                });
+            }
         }
 
     } else {
         console.log("Error Fetching User");
     }
+
 });
+

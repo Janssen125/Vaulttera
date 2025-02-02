@@ -4,6 +4,8 @@ import {
 } from '@dfinity/principal';
 document.addEventListener("DOMContentLoaded", async function () {
     const urlParams = new URLSearchParams(window.location.search);
+    const principal = Principal.fromText(JSON.parse(sessionStorage.getItem("principal")).__principal__);
+    const currUser = await getUserInfo(principal);
     const nftId = urlParams.get('id');
     const result = await showAllNFT(nftId);
     for (let [i,[id, nft]] of result.entries()) {
@@ -24,8 +26,8 @@ document.addEventListener("DOMContentLoaded", async function () {
             else{
                 document.getElementById("slot").innerHTML = nft.slot - bought;
             }
-            const ownership = await checkOwnership(Principal.fromText(JSON.parse(sessionStorage.getItem("principal")).__principal__), id);
-            if (ownership) {
+            const ownership = await checkOwnership(principal, id);
+            if (ownership || user.ok.email == currUser.ok.email) {
                 document.getElementById("benefit").innerHTML = nft.benefit;
             }
 
