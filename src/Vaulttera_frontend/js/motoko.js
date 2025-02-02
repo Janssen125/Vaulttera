@@ -74,6 +74,8 @@ const idlFactory = ({
         getAllBoughtNFT: IDL.Func([IDL.Text], [IDL.Nat], ["query"]),
         getAllUserBought: IDL.Func([IDL.Principal], [IDL.Vec(IDL.Tuple(IDL.Text, nftType))], 'query'),
         checkOwnership: IDL.Func([IDL.Principal, IDL.Text], [IDL.Bool], 'query'),
+        getRevenue: IDL.Func([IDL.Principal], [IDL.Nat], 'query'),
+        deleteNFT: IDL.Func([IDL.Text], [Result]),
     });
 };
 
@@ -211,9 +213,11 @@ export async function login(lemail, lpassword) {
                 location.href = "./index.html";
             } else {
                 alert("Incorrect Password");
+                location.reload()
             }
         } else {
             alert("Email or Password Incorrect");
+                location.reload()
         }
     } catch (error) {
         console.log("Error during login:", error);
@@ -302,4 +306,14 @@ export async function getAllUserBought(p) {
 export async function checkOwnership(p, id) {
     const ownership = await actor.checkOwnership(p, id);
     return ownership;
+}
+
+export async function getRevenue(p) {
+    const revenue = await actor.getRevenue(p);
+    return revenue;
+}
+
+export async function deleteNFT(id) {
+    const delNft = await actor.deleteNFT(id);
+    return delNft;
 }

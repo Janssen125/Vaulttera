@@ -93,8 +93,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
     const element = document.getElementById("veryUniqueItems");
     if (element) {
-        element.innerHTML = items; // Set the items once the loop finishes
+        element.innerHTML = items;
     }
-
     document.getElementById("expense").innerHTML = expenses;
 });

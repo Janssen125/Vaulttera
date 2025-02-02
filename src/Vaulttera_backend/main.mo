@@ -362,4 +362,26 @@ actor {
     return result;
   };
 
+  public query func getRevenue(nftSeller : Principal) : async Nat {
+    var revenue : Nat = 0;
+
+    // Loop through nftSlot to find NFTs that were originally owned by nftSeller
+    for ((_, ownershipData) in nftSlot.entries()) {
+      let nftId = ownershipData.nft;
+      let currentOwner = ownershipData.owner;
+
+      switch (nftData.get(nftId)) {
+        case (?nft) {
+          // If the NFT's original owner was nftSeller but it now belongs to someone else
+          if (nft.owner == nftSeller and currentOwner != nftSeller) {
+            revenue += nft.price; // Add the price of the sold NFT
+          };
+        };
+        case (_) {}; // NFT not found, skip
+      };
+    };
+
+    return revenue;
+  };
+
 };
