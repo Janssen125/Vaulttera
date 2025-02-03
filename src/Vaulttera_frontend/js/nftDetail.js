@@ -29,10 +29,10 @@ document.addEventListener("DOMContentLoaded", async function () {
             if (id == nftId) {
                 document.getElementById("image").src = nft.image;
                 document.getElementById("name").innerHTML = nft.name;
-                document.getElementById("owner").innerHTML = user.ok.name;
-                document.getElementById("category").innerHTML = category;
+                document.getElementById("owner").innerHTML = "Creator: " + user.ok.name;
+                document.getElementById("category").innerHTML = "Category: " + category;
                 document.getElementById("price").innerHTML = nft.price;
-                document.getElementById("description").innerHTML = nft.description;
+                document.getElementById("description").innerHTML = "Description: " + nft.description;
                 if (bought >= nft.slot) {
                     document.getElementById('slot').innerHTML = `NFT is sold`;
                 } else {
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 }
                 const ownership = await checkOwnership(principal, id);
                 if (ownership || user.ok.email == currUser.ok.email) {
-                    document.getElementById("benefit").innerHTML = nft.benefit;
+                    document.getElementById("benefit").innerHTML = "NFT Reward: " + nft.benefit;
                 }
 
                 return;

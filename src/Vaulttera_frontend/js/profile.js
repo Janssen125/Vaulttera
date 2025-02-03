@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         items += `
                                                 <div class="profile-nft-card">
                                         <img src="${nft.image}" alt="">
-                                        <h4>Name: ${nft.name}</h4>
+                                        <h4>${nft.name}</h4>
                                         <h6>Category: ${category}</h6>
                                         <a href="nftdetail.html?id=${id}" class="btn-logout">Details</a>
                                     </div>`;
