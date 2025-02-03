@@ -52,9 +52,9 @@ actor {
 
   let dummyPrincipal = Principal.fromText("6vna6-am6d2-fjuqg-7nfj7-6222p-wkmwn-yglwh-or6bj-tfkmo-bh2yk-yqe");
   let newUser = {
-    name = "Dummy";
+    name = "Mr bob";
     email = "Dummy@gmail.com";
-    bioStatus = "Dummy";
+    bioStatus = "Creator of the Best Nft ";
     password = "Dummy";
   };
   userData.put(dummyPrincipal, newUser);
@@ -62,9 +62,9 @@ actor {
 
   let dummyPrincipal1 = Principal.fromText("eqnjc-icmvt-p73ls-f6n3m-rcgjn-fodyc-edxwo-rum2f-rencw-hce23-cae");
   let newUser1 = {
-    name = "Dummy1";
+    name = "Mr agus";
     email = "Dummy1@gmail.com";
-    bioStatus = "Dummy1";
+    bioStatus = "Consumer of the Nft ";
     password = "Dummy1";
   };
   userData.put(dummyPrincipal1, newUser1);
@@ -74,8 +74,8 @@ actor {
 
   let dummyId = "NFT1";
   let dummyNFT = {
-    name = "Dummy NFT";
-    description = "Dummy NFT";
+    name = "Pythographyc Tutorial";
+    description = "pembelajaran suatu hal diluar hal yang bisa dibayangkan oleh seseorang untuk menjelajah dunia baru";
     category = #study;
     owner = dummyPrincipal;
     price = 100;
@@ -87,12 +87,12 @@ actor {
 
   let dummyId1 = "NFT2";
   let dummyNFT1 = {
-    name = "Dummy NFT";
-    description = "Dummy NFT";
+    name = "Coders wars";
+    description = "Perperangan antara eror 404 Not found dengan invisible Line";
     category = #coding;
     owner = dummyPrincipal;
     price = 100;
-    image = "assets/img/dummy-1.jpg";
+    image = "assets/img/dummy-2.jpg";
     slot = 10;
     benefit = "Thank you for buying the NFT, here are some of the links for the tutorial: https://google.com";
   };
@@ -100,12 +100,12 @@ actor {
 
   let dummyId2 = "NFT3";
   let dummyNFT2 = {
-    name = "Dummy NFT";
-    description = "Dummy NFT";
+    name = "Reflect Beyond Unknown";
+    description = "cara bermain game yang tidak pernah ada di dunia ini";
     category = #game;
     owner = dummyPrincipal;
     price = 100;
-    image = "assets/img/dummy-1.jpg";
+    image = "assets/img/dummy-3.jpg";
     slot = 10;
     benefit = "Thank you for buying the NFT, here are some of the links for the tutorial: https://google.com";
   };
@@ -113,12 +113,12 @@ actor {
 
   let dummyId3 = "NFT4";
   let dummyNFT3 = {
-    name = "Dummy NFT";
-    description = "Dummy NFT";
+    name = "Single Gear";
+    description = "Knowledge beyond the discovery of single gear could turn the world upside down";
     category = #technology;
     owner = dummyPrincipal;
     price = 100;
-    image = "assets/img/dummy-1.jpg";
+    image = "assets/img/dummy-4.jpg";
     slot = 10;
     benefit = "Thank you for buying the NFT, here are some of the links for the tutorial: https://google.com";
   };
