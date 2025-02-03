@@ -342,7 +342,7 @@ actor {
       if (owner.owner == p) {
         switch (nftData.get(owner.nft)) {
           case (?nft) {
-            result := Array.append(result, [(id, nft)]);
+            result := Array.append(result, [(owner.nft, nft)]);
           };
           case null {};
         };

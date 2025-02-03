@@ -8,7 +8,7 @@ Coba buat projek web3 buat hackaton
 - [x] NFT Detail
 - [x] Profile
 - [x] Revenue
-- [ ] NFT Buy/Sell
+- [x] NFT Buy/Sell
 - [x] Wallet
 
 <h1>Requirement</h1>
