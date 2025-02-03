@@ -1,7 +1,13 @@
 # Vaulttera
 
 <h1>Welcome To Vaulttera!!!</h1>
-Vaulttera is a cutting-edge platform where digital ownership meets seamless accessibility. By integrating Web3 technology with a simple, user-friendly interface, Vaulttera allows users to connect their wallets or enjoy token-gated content without the need for a blockchain wallet. This means everyone—from Web2 newcomers to blockchain enthusiasts—can interact with exclusive content and NFTs (Non-Fungible Tokens) effortlessly.
+Vaulttera is a cutting-edge platform where digital ownership meets seamless accessibility. By integrating Web3 technology with a simple, user-friendly interface, Vaulttera allows users to connect their wallets or enjoy token-gated content without the need for a blockchain wallet. This means everyone—from Web2 newcomers to blockchain enthusiasts—can interact with exclusive content and NFTs (Non-Fungible Tokens) effortlessly. Inspired by the word Terra, the platform embraces a jungle theme, symbolizing exploration, discovery, and exclusive digital ownership.
+
+<h3>Features</h3>
+- NFT Marketplace – Users can browse and purchase NFTs that grant access to premium content.
+- Content Unlocking – NFTs act as keys to unlock books, videos, and private communities.
+- User Authentication – Secure login and identity management for NFT holders.
+- Seamless Transactions – Integrated blockchain transactions for a smooth experience.
 
 <h1>Progress:</h1>
 
