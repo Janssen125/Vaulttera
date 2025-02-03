@@ -34,9 +34,10 @@ ngrok (if want to use google sign in) (https://download.ngrok.com/downloads/wind
 4. Open new wsl Terminal
 5. Run "dfx deploy", do "dfx deploy <canister>" to specify the canister
 6. Type "npm install express multer"
-7. Run ngrok in cmd, type "ngrok http <your_local_web_server>" example: "ngrok http 127.0.0.1:5500" or "ngrok http 80" (for localhost)
-8. Open new wsl at "Vaulttera/src/Vaulttera_frontend/js"
-9. Type "node server.js"
+7. Open Live Server From Visual Studio Code
+8. Run ngrok in cmd, type "ngrok http <your_local_web_server>" example: "ngrok http 127.0.0.1:5500" or "ngrok http 80" (for localhost)
+9. Open new wsl at "Vaulttera/src/Vaulttera_frontend/js"
+10. Type "node server.js"
 
 <h2>Use Google Sign In Guide</h2>
 
