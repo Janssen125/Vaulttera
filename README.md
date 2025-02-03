@@ -36,7 +36,7 @@ ngrok (if want to use google sign in) (https://download.ngrok.com/downloads/wind
 6. Type "npm install express multer"
 7. Open Live Server From Visual Studio Code
 8. Run ngrok in cmd, type "ngrok http <your_local_web_server>" example: "ngrok http 127.0.0.1:5500" or "ngrok http 80" (for localhost)
-9. Open new wsl at "Vaulttera/src/Vaulttera_frontend/js"
+9. Open new wsl at "/src/Vaulttera_frontend/js"
 10. Type "node server.js"
 
 <h2>Use Google Sign In Guide</h2>
