@@ -90,6 +90,7 @@ document.getElementById("theform").addEventListener("submit", async function (ev
     try {
         
         const result = await updateNFT(id, nftData); 
+        location.href = "revenue.html";
         
         if ("ok" in result) {
             alert("NFT updated successfully!");
@@ -98,7 +99,6 @@ document.getElementById("theform").addEventListener("submit", async function (ev
         } else {
             console.log("Error: " + result.message);
         }
-        location.href = "revenue.html";
     } catch (error) {
         console.error("Error creating NFT:", error);
         alert("Failed to create NFT.");

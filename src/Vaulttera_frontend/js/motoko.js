@@ -177,22 +177,17 @@ export async function register(username, email, password) {
         bioStatus: "My Bio",
         password: password
     };
-    console.log(email);
 
     try {
         const check = await actor.checkEmail(email);
-
-        if (!check) {
-            alert("Error: Check result is undefined or null.");
-            return;
-        }
+        alert(check);
         if ("ok" in check) {
             alert("Email Already Exists");
         } else if ("err" in check) {
             const userPrincipal = createIdentity(email, newUser);
             const registerUserResult = await actor.createUser(userPrincipal, newUser);
+            sessionStorage.setItem("principal", JSON.stringify(userPrincipal));
             if ("ok" in registerUserResult) {
-                sessionStorage.setItem("principal", JSON.stringify(userPrincipal));
                 alert("User Registered Successfully");
             } else {
                 alert("Error Registering User");
@@ -234,7 +229,7 @@ export async function checkGoogle() {
         console.log("Has Email");
         sessionStorage.setItem("principal", JSON.stringify(emailCheck.ok));
         sessionStorage.setItem("google", noJsonData.picture);
-        // location.href = "index.html";
+        location.href = "index.html";
     } else if ("err" in emailCheck) {
         console.log("No Email");
         const username = noJsonData.name;
@@ -242,7 +237,7 @@ export async function checkGoogle() {
         const password = "googleAuth";
         register(username, email, password);
         sessionStorage.setItem("google", noJsonData.picture);
-        location.href = "index.html";
+        // location.href = "index.html";
     };
 };
 
