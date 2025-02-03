@@ -1,7 +1,11 @@
 # Vaulttera
 
-Coba buat projek web3 buat hackaton
+<h1>Welcome To Vaulttera!!!</h1>
+Vaulttera is a cutting-edge platform where digital ownership meets seamless accessibility. By integrating Web3 technology with a simple, user-friendly interface, Vaulttera allows users to connect their wallets or enjoy token-gated content without the need for a blockchain wallet. This means everyone—from Web2 newcomers to blockchain enthusiasts—can interact with exclusive content and NFTs (Non-Fungible Tokens) effortlessly.
 
+<h1>Progress:</h1>
+
+- [x] Google Sign In
 - [x] Login Page, Register Page, Change Password
 - [x] Landing Page
 - [x] NFT List
