@@ -132,17 +132,17 @@ actor {
   };
   nftSlot.put("OW1", dummyOwnership);
 
-  let dummyOwnership1 = {
-    owner = dummyPrincipal1;
-    nft = dummyId1;
-  };
-  nftSlot.put("OW2", dummyOwnership1);
+  // let dummyOwnership1 = {
+  //   owner = dummyPrincipal1;
+  //   nft = dummyId1;
+  // };
+  // nftSlot.put("OW2", dummyOwnership1);
 
-  let dummyOwnership2 = {
-    owner = dummyPrincipal1;
-    nft = dummyId2;
-  };
-  nftSlot.put("OW3", dummyOwnership2);
+  // let dummyOwnership2 = {
+  //   owner = dummyPrincipal1;
+  //   nft = dummyId2;
+  // };
+  // nftSlot.put("OW3", dummyOwnership2);
 
   // Testing Function
 
@@ -384,42 +384,15 @@ actor {
     return revenue;
   };
 
-  public func buyNFT(buyer : Principal, nftId : Text) : async Result<(), Text> {
+  public func buyNFT(id : Text, buyer : Principal, nftId : Text) : async Result<(), Text> {
     switch (nftData.get(nftId)) {
       case (?nft) {
-        let buyerBalance = Option.get(wallet.get(buyer), 0);
-        if (buyerBalance < nft.price) {
-          return #err("Not Enough Money");
-        } else {
-          // Deduct the price from buyer's balance
-          wallet.put(buyer, buyerBalance - nft.price);
-
-          // Add the price to the seller's balance
-          let sellerBalance = Option.get(wallet.get(nft.owner), 0);
-          wallet.put(nft.owner, sellerBalance + nft.price);
-
-          // Transfer ownership
-          let newOwnership = {
-            owner = buyer;
-            nft = nftId;
-          };
-          nftSlot.put("OW" # Nat.toText(nftSlot.size() + 1), newOwnership);
-
-          // Update NFT owner
-          let updatedNFT = {
-            name = nft.name;
-            description = nft.description;
-            category = nft.category;
-            owner = buyer;
-            price = nft.price;
-            image = nft.image;
-            slot = nft.slot;
-            benefit = nft.benefit;
-          };
-          nftData.put(nftId, updatedNFT);
-
-          return #ok();
+        let data = {
+          owner = buyer;
+          nft = nftId;
         };
+        nftSlot.put(id, data);
+        return #ok();
       };
       case null {
         return #err("NFT not found");

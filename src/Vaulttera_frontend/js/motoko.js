@@ -79,6 +79,7 @@ const idlFactory = ({
         createNFT: IDL.Func([IDL.Text, nftType], [Result], []),
         updateNFT: IDL.Func([IDL.Text, nftType], [Result], []),
         transfer: IDL.Func([IDL.Principal, IDL.Principal, IDL.Nat], [Result], []),
+        buyNFT: IDL.Func([IDL.Text, IDL.Principal, IDL.Text], [Result], []),
     });
 };
 
@@ -180,7 +181,6 @@ export async function register(username, email, password) {
 
     try {
         const check = await actor.checkEmail(email);
-        console.log(check);
 
         if (!check) {
             alert("Error: Check result is undefined or null.");
@@ -207,7 +207,6 @@ export async function register(username, email, password) {
 export async function login(lemail, lpassword) {
     try {
         const emailCheck = await actor.checkEmail(lemail);
-        console.log(emailCheck);
         if ("ok" in emailCheck) {
             const userInfo = await actor.getUserInfo(emailCheck.ok);
             if (userInfo.ok.password == lpassword) {
@@ -334,4 +333,9 @@ export async function updateNFT(id, nft) {
 export async function transfer(p1, p2, amt) {
     const transfer = await actor.transfer(p1, p2, amt);
     return transfer;
+}
+
+export async function buyNFT(id, buyer, nft) {
+    const buynft = await actor.buyNFT(id, buyer, nft);
+    return buynft;
 }

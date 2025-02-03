@@ -17,14 +17,12 @@ async function confirmDelete(event, element) {
 
     if (confirmation) {
         const delRes = await deleteNFT(id);
-        if("ok" in delRes) {
+        if ("ok" in delRes) {
             alert("NFT Deleted");
             location.reload();
-        }
-        else if("err" in delRes){
+        } else if ("err" in delRes) {
             alert("Fail to delete NFT");
-        }
-        else{
+        } else {
             alert("NFT not avaliable");
         }
     } else {
@@ -33,7 +31,13 @@ async function confirmDelete(event, element) {
 }
 
 document.addEventListener("DOMContentLoaded", async function () {
-    const principal = Principal.fromText(JSON.parse(sessionStorage.getItem("principal")).__principal__);
+    let principal;
+    try {
+        principal = Principal.fromText(JSON.parse(sessionStorage.getItem("principal")).__principal__);
+    } catch (error) {
+        console.log("Error Fetching User");
+        location.href = "login.html";
+    }
     const user = await getUserInfo(principal);
     if ("err" in user) {
         console.log(user.err);
@@ -43,7 +47,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const result = await showAllNFT();
         const revenue = await getRevenue(principal);
         let items = `<div class="create-nft-button">
-                    <a href="./createnft.html" class="btn">CREATE NFT</a>
+        <a href="./createnft.html" class="btn">CREATE NFT</a>
                     Total Revenue: ${revenue}
                 </div>`;
         let norev = true;
@@ -94,5 +98,5 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.log("Error Fetching User");
     }
 
-});
 
+});

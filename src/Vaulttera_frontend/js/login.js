@@ -19,7 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
       register(username, email, password);
     });
 
-    document.getElementById("lpassword").addEventListener("focusout", function () {
+    document.getElementById("loginForm").addEventListener("submit", function () {
+      event.preventDefault();
       document.getElementById("loginBtn").innerHTML = "Loading...";
       document.getElementById("loginBtn").disabled = true;
       const lemail = document.getElementById("lemail").value;
