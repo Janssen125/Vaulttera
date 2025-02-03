@@ -78,6 +78,7 @@ const idlFactory = ({
         deleteNFT: IDL.Func([IDL.Text], [Result]),
         createNFT: IDL.Func([IDL.Text, nftType], [Result], []),
         updateNFT: IDL.Func([IDL.Text, nftType], [Result], []),
+        transfer: IDL.Func([IDL.Principal, IDL.Principal, IDL.Nat], [Result], []),
     });
 };
 
@@ -330,7 +331,7 @@ export async function updateNFT(id, nft) {
     return updtNft;
 }
 
-export async function buyNFT(p, id) {
-    const buyNft = await actor.buyNFT(p, id);
-    return buyNft;
+export async function transfer(p1, p2, amt) {
+    const transfer = await actor.transfer(p1, p2, amt);
+    return transfer;
 }

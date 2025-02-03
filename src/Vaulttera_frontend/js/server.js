@@ -35,7 +35,7 @@ app.post("/create-identity", (req, res) => {
         execSync(`dfx identity use ${identityName}`);
         
         const principal = execSync("dfx identity get-principal").toString().trim();
-        execSync(`dfx identity use ic-identity`);
+        execSync(`dfx identity use default`);
         console.log("Generated Principal:", principal);
         res.json({ principal });
 
